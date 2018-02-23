@@ -52,8 +52,6 @@ public class MainActivity extends AppCompatActivity
         myRef.setValue("Hello, World!");
     }
 
-    public void signIn(View v) {
-        String name = (EditText)findViewById(R.id.name_text).getTe;
 
 
     @Override
