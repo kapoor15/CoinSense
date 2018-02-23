@@ -43,6 +43,8 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -53,7 +55,8 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void signIn(View v) {
-        String name = (EditText)findViewById(R.id.name_text).getTe;
+
+    }
 
 
     @Override
