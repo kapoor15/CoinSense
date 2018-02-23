@@ -21,6 +21,9 @@ import com.google.firebase.database.FirebaseDatabase;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    DatabaseReference myRef;
+    FirebaseDatabase database;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,14 +49,25 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("message");
 
-        myRef.setValue("Hello, World!");
     }
 
     public void signIn(View v) {
-        String name = (EditText)findViewById(R.id.name_text).getTe;
+
+
+
+
+        EditText email = (EditText)findViewById(R.id.email);
+        String s = email.getText().toString();
+
+        EditText password = (EditText)findViewById(R.id.Password);
+        String pass = password.getText().toString();
+
+        myRef.child("users").child("Dhruv").child(s).child(pass);
+
+    }
 
 
     @Override
