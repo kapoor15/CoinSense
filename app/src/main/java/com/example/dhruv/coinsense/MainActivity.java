@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+<<<<<<< HEAD
     public void signIn(View v) {
 
 
@@ -68,6 +69,8 @@ public class MainActivity extends AppCompatActivity
         myRef.child("users").child("Dhruv").child(s).child(pass);
 
     }
+=======
+>>>>>>> Aman
 
 
     @Override
