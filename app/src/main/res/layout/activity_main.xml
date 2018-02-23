@@ -4,20 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.dhruv.coinsense.MainActivity">
+    tools:context="com.example.dhruv.coinsense.MainActivity"
+    tools:layout_editor_absoluteY="81dp">
 
 
     <EditText
         android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="87dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="53dp"
+        android:layout_marginEnd="164dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
+        android:hint="Name"
         android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintBottom_toTopOf="@+id/password"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,13 +26,12 @@
         android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="200dp"
-        android:layout_marginEnd="125dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="87dp"
+        android:layout_marginEnd="164dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
+        android:hint="Password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username" />
@@ -40,12 +40,60 @@
         android:id="@+id/signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="73dp"
-        android:layout_marginEnd="196dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginBottom="77dp"
+        android:layout_marginEnd="280dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="55dp"
         android:text="Register"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/crypto3" />
+
+    <Spinner
+        android:id="@+id/crypto1"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="176dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="19dp"
+        android:entries="@array/CryptocurrencyChoice1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Spinner
+        android:id="@+id/crypto2"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="176dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="19dp"
+        android:entries="@array/CryptocurrencyChoice1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/crypto1" />
+
+    <Spinner
+        android:id="@+id/crypto3"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="176dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="19dp"
+        android:entries="@array/CryptocurrencyChoice1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/crypto2" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="179dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="43dp"
+        android:text="Choose 3 cryptocurrencies"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />

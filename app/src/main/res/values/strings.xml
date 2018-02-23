@@ -5,4 +5,76 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <string-array name="CryptocurrencyChoice1">
+        <item>Choice 1</item>
+        <item>Bitcoin</item>
+        <item>Ethereum</item>
+        <item>Ripple</item>
+        <item>Bitcoin Cash</item>
+        <item>Litecoin</item>
+        <item>Cardano</item>
+        <item>Neo</item>
+        <item>Stellar</item>
+        <item>EOS</item>
+        <item>Dash</item>
+        <item>IOTA</item>
+        <item>Monero</item>
+        <item>NEM</item>
+        <item>Ethereum Classic</item>
+        <item>TRON</item>
+        <item>VeChain</item>
+        <item>Tether</item>
+        <item>Lisk</item>
+        <item>Bitcoin Gold</item>
+        <item>Qtum</item>
+    </string-array>
+
+    <string-array name="CryptocurrencyChoice2">
+        <item>Choice 2</item>
+        <item>Bitcoin</item>
+        <item>Ethereum</item>
+        <item>Ripple</item>
+        <item>Bitcoin Cash</item>
+        <item>Litecoin</item>
+        <item>Cardano</item>
+        <item>Neo</item>
+        <item>Stellar</item>
+        <item>EOS</item>
+        <item>Dash</item>
+        <item>IOTA</item>
+        <item>Monero</item>
+        <item>NEM</item>
+        <item>Ethereum Classic</item>
+        <item>TRON</item>
+        <item>VeChain</item>
+        <item>Tether</item>
+        <item>Lisk</item>
+        <item>Bitcoin Gold</item>
+        <item>Qtum</item>
+    </string-array>
+
+    <string-array name="CryptocurrencyChoice3">
+        <item>Choice 3</item>
+        <item>Bitcoin</item>
+        <item>Ethereum</item>
+        <item>Ripple</item>
+        <item>Bitcoin Cash</item>
+        <item>Litecoin</item>
+        <item>Cardano</item>
+        <item>Neo</item>
+        <item>Stellar</item>
+        <item>EOS</item>
+        <item>Dash</item>
+        <item>IOTA</item>
+        <item>Monero</item>
+        <item>NEM</item>
+        <item>Ethereum Classic</item>
+        <item>TRON</item>
+        <item>VeChain</item>
+        <item>Tether</item>
+        <item>Lisk</item>
+        <item>Bitcoin Gold</item>
+        <item>Qtum</item>
+    </string-array>
 </resources>
