@@ -6,12 +6,13 @@
 
     <string name="action_settings">Settings</string>
 
-<<<<<<< HEAD
+
     <string-array name="currency_array">
         <item>Bitcoin</item>
         <item>Ethereum</item>
         <item>Verge</item>
-=======
+    </string-array>
+
     <string-array name="CryptocurrencyChoice1">
         <item>Choice 1</item>
         <item>Bitcoin</item>
@@ -82,6 +83,5 @@
         <item>Lisk</item>
         <item>Bitcoin Gold</item>
         <item>Qtum</item>
->>>>>>> 8aa283b67f56b3cb2417f974031d121fb3063844
     </string-array>
 </resources>
