@@ -12,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -49,6 +51,10 @@ public class MainActivity extends AppCompatActivity
 
         myRef.setValue("Hello, World!");
     }
+
+    public void signIn(View v) {
+        String name = (EditText)findViewById(R.id.name_text).getTe;
+
 
     @Override
     public void onBackPressed() {
