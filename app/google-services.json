@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "373310308860",
+    "firebase_url": "https://s18-41-cryptosentimenttrack.firebaseio.com",
+    "project_id": "s18-41-cryptosentimenttrack",
+    "storage_bucket": "s18-41-cryptosentimenttrack.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:373310308860:android:20efbc2d2ed35ebb",
+        "android_client_info": {
+          "package_name": "com.example.dhruv.coinsense"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "373310308860-2jvmn4933uu5g84kbdgmcrqbc09qpopa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dhruv.coinsense",
+            "certificate_hash": "581b0594e9186b3e5570486df2bc594058f23ee0"
+          }
+        },
+        {
+          "client_id": "373310308860-mrvds8juq4bog8nunqg5cmomiq83te00.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtrHo6YM9kvwcQ1IAG8fapbRu4n0OwKQw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "373310308860-mrvds8juq4bog8nunqg5cmomiq83te00.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
