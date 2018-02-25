@@ -84,5 +84,28 @@
         <item>Bitcoin Gold</item>
         <item>Qtum</item>
     </string-array>
+
+    <string-array name="CryptocurrencyChoice4">
+        <item>Bitcoin</item>
+        <item>Ethereum</item>
+        <item>Ripple</item>
+        <item>Bitcoin Cash</item>
+        <item>Litecoin</item>
+        <item>Cardano</item>
+        <item>Neo</item>
+        <item>Stellar</item>
+        <item>EOS</item>
+        <item>Dash</item>
+        <item>IOTA</item>
+        <item>Monero</item>
+        <item>NEM</item>
+        <item>Ethereum Classic</item>
+        <item>TRON</item>
+        <item>VeChain</item>
+        <item>Tether</item>
+        <item>Lisk</item>
+        <item>Bitcoin Gold</item>
+        <item>Qtum</item>
+    </string-array>
     <string name="title_activity_login">LoginActivity</string>
 </resources>

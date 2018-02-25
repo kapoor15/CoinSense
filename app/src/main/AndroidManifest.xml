@@ -20,7 +20,8 @@
         </activity>
         <activity android:name=".CurrencyActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".TwitterActivity"></activity>
     </application>
 
 </manifest>
