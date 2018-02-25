@@ -85,8 +85,33 @@
         <item>Qtum</item>
     </string-array>
 
+<<<<<<< HEAD
     <string name="facebook_app_id">1996674077241804</string>
     <string name="fb_login_protocol_scheme">fb1996674077241804</string>
 
+=======
+    <string-array name="CryptocurrencyChoice4">
+        <item>Bitcoin</item>
+        <item>Ethereum</item>
+        <item>Ripple</item>
+        <item>Bitcoin Cash</item>
+        <item>Litecoin</item>
+        <item>Cardano</item>
+        <item>Neo</item>
+        <item>Stellar</item>
+        <item>EOS</item>
+        <item>Dash</item>
+        <item>IOTA</item>
+        <item>Monero</item>
+        <item>NEM</item>
+        <item>Ethereum Classic</item>
+        <item>TRON</item>
+        <item>VeChain</item>
+        <item>Tether</item>
+        <item>Lisk</item>
+        <item>Bitcoin Gold</item>
+        <item>Qtum</item>
+    </string-array>
+>>>>>>> fa47492f492a3bcf31e8973ce7399ed78f1b6472
     <string name="title_activity_login">LoginActivity</string>
 </resources>
