@@ -84,5 +84,9 @@
         <item>Bitcoin Gold</item>
         <item>Qtum</item>
     </string-array>
+
+    <string name="facebook_app_id">1996674077241804</string>
+    <string name="fb_login_protocol_scheme">fb1996674077241804</string>
+
     <string name="title_activity_login">LoginActivity</string>
 </resources>

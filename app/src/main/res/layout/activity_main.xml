@@ -69,7 +69,7 @@
         android:layout_marginBottom="29dp"
         android:layout_marginEnd="144dp"
         android:layout_marginStart="16dp"
-        android:entries="@array/CryptocurrencyChoice1"
+        android:entries="@array/CryptocurrencyChoice2"
         app:layout_constraintBottom_toTopOf="@+id/crypto3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -81,7 +81,7 @@
         android:layout_marginBottom="29dp"
         android:layout_marginEnd="144dp"
         android:layout_marginStart="16dp"
-        android:entries="@array/CryptocurrencyChoice1"
+        android:entries="@array/CryptocurrencyChoice3"
         app:layout_constraintBottom_toTopOf="@+id/signup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
