@@ -47,7 +47,7 @@ public class TwitterActivity extends AppCompatActivity {
         String results = "";
 
         for (int i = 0; i < 5; i++) {
-            results += tweets.get(i).getText() + "\n";
+            results += tweets.get(i).getText() + "\n" + "\n";
         }
 
         ((TextView)findViewById(R.id.tweets_text)).setText(results);
