@@ -45,40 +45,51 @@
         android:id="@+id/go_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="400dp"
+        android:layout_marginBottom="131dp"
         android:layout_marginEnd="256dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="15dp"
         android:onClick="checkPrice"
         android:text="Go"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/about_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/choose_text" />
+        app:layout_constraintTop_toBottomOf="@+id/price_text" />
 
     <TextView
         android:id="@+id/price_text"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="399dp"
-        android:layout_marginEnd="330dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="93dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="46dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.14"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/choice_spinner" />
 
     <Button
         android:id="@+id/tweets_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="228dp"
+        android:layout_marginBottom="159dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginTop="193dp"
-        android:text="Get Tweets"
         android:onClick="goTo"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="Get Tweets"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/price_text" />
+
+    <Button
+        android:id="@+id/about_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="158dp"
+        android:layout_marginEnd="121dp"
+        android:layout_marginStart="16dp"
+        android:text="About us"
+        android:onClick="aboutus"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tweets_button"
+        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>

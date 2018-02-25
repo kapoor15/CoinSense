@@ -36,6 +36,9 @@ public class CurrencyActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), TwitterActivity.class));
     }
 
+    public void aboutus (View v) {
+        startActivity(new Intent(getApplicationContext(), AboutUsActivity.class));
+    }
 
 
     public void checkPrice(View v) throws IOException {
