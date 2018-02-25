@@ -34,13 +34,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         pd = new ProgressDialog(this);
         reg = (Button) findViewById(R.id.signup);
-        user = (EditText) findViewById(R.id.username);
-        pass = (EditText) findViewById(R.id.password);
+        user = (EditText) findViewById(R.id.signup_email);
+        pass = (EditText) findViewById(R.id.signup_password);
         reg.setOnClickListener(this);
-    }
-
-    public void goThere(View v) {
-        startActivity(new Intent(getApplicationContext(), CurrencyActivity.class));
     }
 
     private void registerUser(){
@@ -57,16 +53,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
-        // pd.setMessage("Registering...");
-        //pd.show();
+        pd.setMessage("Registering...");
+        pd.show();
 
         firebaseAuth.createUserWithEmailAndPassword(email,password).
                 addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-
                             Toast.makeText(MainActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), CurrencyActivity.class));
                         } else {
                             Toast.makeText(MainActivity.this, "Registration Failed", Toast.LENGTH_SHORT).show();
 
@@ -75,13 +71,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 });
     }
 
-
-    @Override
     public void onClick(View view) {
         if (view == reg) {
             registerUser();
         }
-
-
     }
 }
