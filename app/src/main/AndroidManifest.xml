@@ -28,7 +28,8 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".TwitterActivity" />
         <activity android:name=".AboutUsActivity" />
-        <activity android:name=".InfoActivity"></activity>
+        <activity android:name=".InfoActivity" />
+        <activity android:name=".FacebookLogin"></activity>
     </application>
 
 </manifest>

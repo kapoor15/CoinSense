@@ -36,7 +36,7 @@ public class CurrencyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_currency);
         //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-       // ((TextView) findViewById(R.id.username)).setText(user.getEmail());
+       //((TextView) findViewById(R.id.username)).setText(user.getEmail());
     }
 
     public void goTo(View v) {
