@@ -1,11 +1,16 @@
 package com.example.dhruv.coinsense;
 
+import android.content.Intent;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
@@ -116,5 +121,15 @@ public class InfoActivity extends AppCompatActivity {
 
 
 
+    }
+    public void logout(View v) {
+        FirebaseAuth.getInstance().signOut();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user == null) {
+            startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
+            Toast.makeText(InfoActivity.this, "Signout successful", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(InfoActivity.this, "Signout failed", Toast.LENGTH_SHORT).show();
+        }
     }
 }

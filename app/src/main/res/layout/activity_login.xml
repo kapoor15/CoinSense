@@ -62,16 +62,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-<<<<<<< HEAD
-=======
+
     <Button
         android:id="@+id/forgot_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="62dp"
-        android:text="Forgot password"
+        android:layout_marginBottom="64dp"
+        android:layout_marginStart="44dp"
         android:onClick="forgotPassword"
+        android:text="Forgot password"
         app:layout_constraintBottom_toTopOf="@+id/login_facebook"
-        tools:layout_editor_absoluteX="34dp" />
->>>>>>> de0ff9f58137cdf53fbe723c6ca6e96b0cc2b4c4
+        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>

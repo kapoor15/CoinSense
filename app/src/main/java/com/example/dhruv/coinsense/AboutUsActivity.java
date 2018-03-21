@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
@@ -81,5 +85,15 @@ public class AboutUsActivity extends AppCompatActivity {
         }
 
 
+    }
+    public void logout(View v) {
+        FirebaseAuth.getInstance().signOut();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user == null) {
+            startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
+            Toast.makeText(AboutUsActivity.this, "Signout successful", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(AboutUsActivity.this, "Signout failed", Toast.LENGTH_SHORT).show();
+        }
     }
 }
