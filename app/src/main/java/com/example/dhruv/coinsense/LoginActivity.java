@@ -31,6 +31,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class LoginActivity extends AppCompatActivity {
 
     private Button login;
+    private Button forgot;
     private EditText user;
     private EditText pass;
     private LoginButton login_fb;
@@ -50,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
 
         pd = new ProgressDialog(this);
         login = (Button) findViewById(R.id.login_btn);
+        forgot = (Button) findViewById(R.id.forgot_btn);
         login_fb = (LoginButton) findViewById(R.id.login_facebook);
         login_fb.setReadPermissions("email", "public_profile");
 
@@ -77,8 +79,8 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        pd.setMessage("Logging in...");
-        pd.show();
+       // pd.setMessage("Logging in...");
+       // pd.show();
 
         firebaseAuth.signInWithEmailAndPassword(email,password).
                 addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -86,6 +88,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     startActivity(new Intent(getApplicationContext(), CurrencyActivity.class));
                 } else {
                     Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
@@ -144,6 +147,33 @@ public class LoginActivity extends AppCompatActivity {
     public void checkFacebook(View v) {
         if (v == login_fb) {
             LoginfbUser();
+        }
+    }
+
+    public void ResetPassword() {
+        String email = user.getText().toString().trim();
+        if (TextUtils.isEmpty(email)) {
+            Toast.makeText(this, "Please enter email", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        firebaseAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(LoginActivity.this, "Check email to reset password",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(LoginActivity.this, "Email not found. Please register.",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    public void forgotPassword(View v) {
+        if (v == forgot) {
+            ResetPassword();
         }
     }
 }
