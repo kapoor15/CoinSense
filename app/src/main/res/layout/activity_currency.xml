@@ -12,13 +12,19 @@
         android:id="@+id/tweets_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="160dp"
+=======
+        android:layout_marginBottom="31dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="193dp"
+>>>>>>> de0ff9f58137cdf53fbe723c6ca6e96b0cc2b4c4
         android:onClick="goTo"
         android:text="Get Tweets"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/signout_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.888"
         app:layout_constraintStart_toEndOf="@+id/info_button"
@@ -55,6 +61,7 @@
         android:onClick="info"
         android:text="Coin Info"
         app:layout_constraintBottom_toBottomOf="parent"
+<<<<<<< HEAD
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.02" />
@@ -129,5 +136,21 @@
             app:layout_constraintVertical_bias="0.137" />
     </android.support.constraint.ConstraintLayout>
 
+=======
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/signout_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="80dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="29dp"
+        android:text="Signout"
+        android:onClick="logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/info_button" />
+>>>>>>> de0ff9f58137cdf53fbe723c6ca6e96b0cc2b4c4
 
 </android.support.constraint.ConstraintLayout>

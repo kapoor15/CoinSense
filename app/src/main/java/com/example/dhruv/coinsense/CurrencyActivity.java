@@ -2,11 +2,16 @@ package com.example.dhruv.coinsense;
 
 import android.content.Intent;
 import android.os.StrictMode;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -30,6 +35,8 @@ public class CurrencyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_currency);
+        //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+       // ((TextView) findViewById(R.id.username)).setText(user.getEmail());
     }
 
     public void goTo(View v) {
@@ -44,6 +51,16 @@ public class CurrencyActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), InfoActivity.class));
     }
 
+    public void logout(View v) {
+        FirebaseAuth.getInstance().signOut();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user == null) {
+        startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
+        Toast.makeText(CurrencyActivity.this, "Signout successful", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(CurrencyActivity.this, "Signout failed", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     public void checkPrice(View v) throws IOException {
 
