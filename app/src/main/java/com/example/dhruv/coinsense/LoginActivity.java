@@ -117,6 +117,8 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 
+
+
     public void LoginfbUser() {
         login_fb.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
