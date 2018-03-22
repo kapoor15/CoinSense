@@ -36,12 +36,10 @@ public class FileRead {
     }
 
    public void reader() {
-       System.out.println("PRINTHEREEE");
        InputStream is = null;
        try {
            is = this.ctxt.getAssets().open("AFINN-111.txt");
            if(is == null)
-               System.out.println("LOOOOOOLLLLLLLLLL");
        } catch (IOException e) {
            e.printStackTrace();
        }
@@ -70,6 +68,5 @@ public class FileRead {
    {
        return toReturn;
    }
-
 
 }
