@@ -39,7 +39,6 @@ public class FileRead {
        InputStream is = null;
        try {
            is = this.ctxt.getAssets().open("AFINN-111.txt");
-           if(is == null)
        } catch (IOException e) {
            e.printStackTrace();
        }

@@ -41,14 +41,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         firebaseAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         usersRef = database.getReference();
-        FileRead read = FileRead.getInstance(this);
-        read.reader();
-        HashMap<String, Integer> vals = read.get();
 
-        for(String s : vals.keySet())
-        {
-            System.out.println(s + " " + vals.get(s));
-        }
+
         pd = new ProgressDialog(this);
         reg = (Button) findViewById(R.id.signup);
         user = (EditText) findViewById(R.id.signup_email);
