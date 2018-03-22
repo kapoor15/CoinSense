@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -38,6 +39,16 @@ public class FacebookLogin extends AppCompatActivity {
             String c2 = crypto2.getSelectedItem().toString();
             Spinner crypto3 = (Spinner)findViewById(R.id.crypto3);
             String c3 = crypto3.getSelectedItem().toString();
+
+            if (c1.equals("Choice 1") || c2.equals("Choice 2") || c3.equals("Choice 3")) {
+                Toast.makeText(this, "Please choose 3 cryptocurrencies", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (c1.equals(c2) || c1.equals(c3) || c2.equals(c3)) {
+                Toast.makeText(this, "Please choose 3 unique cryptocurrencies", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
             User u1 = new User(email, c1, c2, c3);
             String key = usersRef.child("users").push().getKey();
