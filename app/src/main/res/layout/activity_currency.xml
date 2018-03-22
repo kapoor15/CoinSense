@@ -133,15 +133,5 @@
             app:layout_constraintHorizontal_bias="0.8"
             app:layout_constraintStart_toEndOf="@+id/go_button"
             app:layout_constraintTop_toTopOf="parent" />
-    </android.support.constraint.ConstraintLayout><![CDATA[
-
-=======
-        app:layout_constraintStart_toStartOf="parent" />
-
-<<<<<<< HEAD
-=======
-    >>>>>>> de0ff9f58137cdf53fbe723c6ca6e96b0cc2b4c4
-
-]]>
->>>>>>> 91202a3b3db0dac5bda2fb5680f7bc2a6747294a
+    </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>

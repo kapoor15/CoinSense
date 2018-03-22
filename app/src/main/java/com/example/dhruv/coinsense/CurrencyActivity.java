@@ -52,12 +52,10 @@ public class CurrencyActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), InfoActivity.class));
     }
 
-<<<<<<< HEAD
     public void sentiment (View v) {
         startActivity(new Intent(getApplicationContext(), SentimentActivity.class));
     }
 
-=======
     public void logout(View v) {
         FirebaseAuth.getInstance().signOut();
         LoginManager.getInstance().logOut();
@@ -69,7 +67,7 @@ public class CurrencyActivity extends AppCompatActivity {
             Toast.makeText(CurrencyActivity.this, "Signout failed", Toast.LENGTH_SHORT).show();
         }
     }
->>>>>>> 91202a3b3db0dac5bda2fb5680f7bc2a6747294a
+
 
     public void checkPrice(View v) throws IOException {
 
