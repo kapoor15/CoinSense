@@ -28,7 +28,15 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".TwitterActivity" />
         <activity android:name=".AboutUsActivity" />
-        <activity android:name=".InfoActivity"></activity>
+        <activity android:name=".InfoActivity" />
+<<<<<<< HEAD
+        <activity
+            android:name=".SentimentActivity"
+            android:label="@string/title_activity_sentiment"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+=======
+        <activity android:name=".FacebookLogin"></activity>
+>>>>>>> 91202a3b3db0dac5bda2fb5680f7bc2a6747294a
     </application>
 
 </manifest>

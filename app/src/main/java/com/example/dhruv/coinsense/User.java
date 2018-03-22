@@ -22,6 +22,10 @@ public class User {
         this.crypto3 = crypto3;
     }
 
+    User(){
+
+    }
+
     public Map<String, Object> toMap()
     {
         HashMap<String, Object> result = new HashMap<>();

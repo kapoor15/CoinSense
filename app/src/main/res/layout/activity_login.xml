@@ -4,20 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.dhruv.coinsense.LoginActivity">
+    tools:context="com.example.dhruv.coinsense.LoginActivity"
+    tools:layout_editor_absoluteY="89dp">
 
     <EditText
         android:id="@+id/login_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:layout_marginEnd="109dp"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginEnd="312dp"
+        android:layout_marginStart="237dp"
+        android:layout_marginTop="75dp"
         android:ems="10"
         android:hint="Enter Email"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/login_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,39 +25,69 @@
         android:id="@+id/login_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="69dp"
-        android:layout_marginEnd="109dp"
-        android:layout_marginStart="34dp"
+        android:layout_marginEnd="312dp"
+        android:layout_marginStart="237dp"
+        android:layout_marginTop="61dp"
         android:ems="10"
         android:hint="Enter Password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/login_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_email" />
 
     <Button
         android:id="@+id/login_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="39dp"
-        android:layout_marginEnd="238dp"
-        android:layout_marginStart="34dp"
+        android:layout_marginEnd="441dp"
+        android:layout_marginStart="237dp"
+        android:layout_marginTop="44dp"
         android:onClick="checkLogin"
         android:text="Login"
-        app:layout_constraintBottom_toTopOf="@+id/login_facebook"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_password" />
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/login_facebook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="45dp"
-        android:layout_marginEnd="238dp"
-        android:layout_marginStart="34dp"
-        android:text="facebook login"
+        android:layout_marginBottom="41dp"
+        android:layout_marginEnd="350dp"
+        android:layout_marginStart="237dp"
+        android:layout_marginTop="60dp"
         android:onClick="checkFacebook"
+        android:text="facebook login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/forgot_btn" />
+
+
+    <Button
+        android:id="@+id/forgot_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="372dp"
+        android:layout_marginStart="237dp"
+        android:layout_marginTop="21dp"
+        android:onClick="forgotPassword"
+        android:text="Forgot password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reg_btn" />
+
+    <Button
+        android:id="@+id/reg_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginEnd="441dp"
+        android:layout_marginStart="237dp"
+        android:layout_marginTop="29dp"
+        android:onClick="regpage"
+        android:text="Register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_btn" />
 </android.support.constraint.ConstraintLayout>

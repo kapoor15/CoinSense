@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.dhruv.coinsense.FacebookLogin"
+    tools:layout_editor_absoluteY="81dp">
+
+    <Button
+        android:id="@+id/register_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="116dp"
+        android:layout_marginEnd="256dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="44dp"
+        android:text="Register"
+        android:onClick="fbregister"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/crypto3" />
+
+    <Spinner
+        android:id="@+id/crypto1"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="144dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:entries="@array/CryptocurrencyChoice1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Spinner
+        android:id="@+id/crypto2"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="144dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="26dp"
+        android:entries="@array/CryptocurrencyChoice2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/crypto1" />
+
+    <Spinner
+        android:id="@+id/crypto3"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="144dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="42dp"
+        android:entries="@array/CryptocurrencyChoice3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/crypto2" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="144dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="99dp"
+        android:text="Choose 3 cryptocurrencies"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
