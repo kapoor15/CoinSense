@@ -67,6 +67,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Spinner crypto3 = (Spinner)findViewById(R.id.crypto3);
         String c3 = crypto3.getSelectedItem().toString();
 
+        if (TextUtils.isEmpty(email)) {
+            Toast.makeText(this, "Please enter email", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (TextUtils.isEmpty(password)) {
+            Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (c1.equals("Choice 1") || c2.equals("Choice 2") || c3.equals("Choice 3")) {
+            Toast.makeText(this, "Please choose 3 cryptocurrencies", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (c1.equals(c2) || c1.equals(c3) || c2.equals(c3)) {
+            Toast.makeText(this, "Please choose 3 unique cryptocurrencies", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         User u1 = new User(email, c1, c2, c3);
         String key = usersRef.child("users").push().getKey();
         Map<String, Object> userValues = u1.toMap();
@@ -75,15 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         usersRef.updateChildren(userUpdates);
 
-        if (TextUtils.isEmpty(email)) {
-            Toast.makeText(this, "Please enter email", Toast.LENGTH_SHORT).show();;
-            return;
-        }
 
-        if (TextUtils.isEmpty(password)) {
-            Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show();;
-            return;
-        }
 
         pd.setMessage("Registering...");
         pd.show();

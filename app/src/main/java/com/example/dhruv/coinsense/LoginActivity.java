@@ -40,6 +40,7 @@ import java.util.List;
 public class LoginActivity extends AppCompatActivity {
 
     private Button login;
+    private Button reg;
     private Button forgot;
     private EditText user;
     private EditText pass;
@@ -47,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     private ProgressDialog pd;
     CallbackManager mCallbackManager;
+    private int attempts;
 
     DatabaseReference root;
     DatabaseReference usersdb;
@@ -63,10 +65,11 @@ public class LoginActivity extends AppCompatActivity {
         usersdb = root.child("users");
         pd = new ProgressDialog(this);
         login = (Button) findViewById(R.id.login_btn);
+        reg = (Button) findViewById(R.id.reg_btn);
         forgot = (Button) findViewById(R.id.forgot_btn);
         login_fb = (LoginButton) findViewById(R.id.login_facebook);
         login_fb.setReadPermissions("email", "public_profile");
-
+        attempts = 0;
         user = (EditText) findViewById(R.id.login_email);
         pass = (EditText) findViewById(R.id.login_password);
     }
@@ -103,6 +106,10 @@ public class LoginActivity extends AppCompatActivity {
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     startActivity(new Intent(getApplicationContext(), CurrencyActivity.class));
                 } else {
+                    attempts++;
+                    if(attempts == 3) {
+                        reg.setVisibility(reg.VISIBLE);
+                    }
                     Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
                     pd.hide();
                 }
@@ -224,6 +231,12 @@ public class LoginActivity extends AppCompatActivity {
     public void forgotPassword(View v) {
         if (v == forgot) {
             ResetPassword();
+        }
+    }
+
+    public void regpage(View v) {
+        if (v == reg) {
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
         }
     }
 }

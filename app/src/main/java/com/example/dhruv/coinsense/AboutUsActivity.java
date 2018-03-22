@@ -9,6 +9,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -88,6 +89,8 @@ public class AboutUsActivity extends AppCompatActivity {
     }
     public void logout(View v) {
         FirebaseAuth.getInstance().signOut();
+        LoginManager.getInstance().logOut();
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if(user == null) {
             startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
