@@ -16,6 +16,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginTop="8dp"
         android:text="Get Tweets!"
+        android:onClick = "goTo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/header"
@@ -133,12 +134,5 @@
             app:layout_constraintHorizontal_bias="0.8"
             app:layout_constraintStart_toEndOf="@+id/go_button"
             app:layout_constraintTop_toTopOf="parent" />
-    </android.support.constraint.ConstraintLayout><![CDATA[
-
-=======
-        app:layout_constraintStart_toStartOf="parent" />
-
-    >>>>>>> de0ff9f58137cdf53fbe723c6ca6e96b0cc2b4c4
-
-]]>
+    </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>
