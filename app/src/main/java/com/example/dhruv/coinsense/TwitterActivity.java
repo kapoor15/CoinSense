@@ -54,6 +54,7 @@ public class TwitterActivity extends AppCompatActivity {
         String choice = ((Spinner) findViewById(R.id.tweet_spinner)).getSelectedItem().toString();
 
         Query query = new Query(choice);
+        query.setCount(50);
         QueryResult result;
         result = twitter.search(query);
         List<Status> tweets = result.getTweets();
@@ -63,6 +64,8 @@ public class TwitterActivity extends AppCompatActivity {
         for (int i = 0; i < 5; i++) {
             results += tweets.get(i).getText() + "\n" + "\n";
         }
+
+        results = "" + tweets.size();
 
         ((TextView)findViewById(R.id.tweets_text)).setText(results);
     }
