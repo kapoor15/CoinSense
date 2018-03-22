@@ -91,8 +91,8 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-       // pd.setMessage("Logging in...");
-       // pd.show();
+       pd.setMessage("Logging in...");
+       pd.show();
 
         firebaseAuth.signInWithEmailAndPassword(email,password).
                 addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -104,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(new Intent(getApplicationContext(), CurrencyActivity.class));
                 } else {
                     Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
-
+                    pd.hide();
                 }
             }
         });

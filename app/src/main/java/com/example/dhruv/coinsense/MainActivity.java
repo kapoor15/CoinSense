@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             startActivity(new Intent(getApplicationContext(), CurrencyActivity.class));
                         } else {
                             Toast.makeText(MainActivity.this, "Registration Failed", Toast.LENGTH_SHORT).show();
-
+                            pd.hide();
                         }
                     }
                 });
