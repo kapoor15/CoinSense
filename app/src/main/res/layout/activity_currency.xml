@@ -10,63 +10,60 @@
 
     <Button
         android:id="@+id/tweets_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="168dp"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="218dp"
+        android:layout_marginTop="24dp"
+        android:onClick="goTo"
         android:text="Get Tweets!"
-        android:onClick = "goTo"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header"
-        app:layout_constraintVertical_bias="0.989" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header" />
 
 
     <Button
         android:id="@+id/about_btn"
-        android:layout_width="120dp"
+        android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="168dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="218dp"
+        android:layout_marginTop="16dp"
         android:onClick="aboutus"
         android:text="About us"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tweets_button" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tweets_button" />
 
     <Button
         android:id="@+id/info_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:layout_alignLeft="@+id/price_text"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/price_text"
-        android:layout_marginBottom="168dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="218dp"
+        android:layout_marginTop="16dp"
         android:onClick="info"
         android:text="Coin Info"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/about_btn"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/about_btn" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/header"
         android:layout_width="359dp"
         android:layout_height="82dp"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="176dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="#a0c2ef"
         android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/info_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <Button
@@ -138,15 +135,14 @@
 
     <Button
         android:id="@+id/sentiment_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="59dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="61dp"
-        android:text="Get sentiment"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="218dp"
+        android:layout_marginTop="16dp"
         android:onClick="sentiment"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Get sentiment"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/about_btn"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/info_button" />
 </android.support.constraint.ConstraintLayout>
