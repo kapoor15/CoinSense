@@ -64,8 +64,7 @@ public class TwitterActivity extends AppCompatActivity {
         for (int i = 0; i < 5; i++) {
             results += tweets.get(i).getText() + "\n" + "\n";
         }
-
-        results = "" + tweets.size();
+        
 
         ((TextView)findViewById(R.id.tweets_text)).setText(results);
     }
