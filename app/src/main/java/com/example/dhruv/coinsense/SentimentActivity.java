@@ -11,6 +11,7 @@ import android.widget.Spinner;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.LegendRenderer;
 import com.jjoe64.graphview.ValueDependentColor;
+import com.jjoe64.graphview.helper.StaticLabelsFormatter;
 import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -96,6 +97,7 @@ public class SentimentActivity extends AppCompatActivity {
 
     public void makeGraph(View v) {
         GraphView graph = (GraphView) findViewById(R.id.graph);
+        graph.removeAllSeries();
         //get data points
         double bitcoin = getValues(getTweets("Bitcoin"));
         double ethereum = getValues(getTweets("Ethereum"));
@@ -146,11 +148,16 @@ public class SentimentActivity extends AppCompatActivity {
         graph.addSeries(third);
 
         //get legend
-        first.setTitle("Bitcoin");
-        second.setTitle("Ethereum");
-        third.setTitle("Monero");
-        graph.getLegendRenderer().setVisible(true);
-        graph.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);
+        //first.setTitle("Bitcoin");
+        //second.setTitle("Ethereum");
+        //third.setTitle("Monero");
+        //graph.getLegendRenderer().setVisible(true);
+        //graph.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);
+
+        StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graph);
+        staticLabelsFormatter.setHorizontalLabels(new String[] {"Bitcoin", "Ethereum", "Monero"});
+        graph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
+
 
     }
 

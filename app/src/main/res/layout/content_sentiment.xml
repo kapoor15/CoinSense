@@ -20,9 +20,20 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.jjoe64.graphview.GraphView
+        android:id="@+id/graph"
         android:layout_width="match_parent"
-        android:layout_height="200dip"
-        android:id="@+id/graph" />
+        android:layout_height="300dp" />
+
+    <TextView
+        android:id="@+id/graph_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"
+        android:layout_marginTop="27dp"
+        android:text="The above graph uses the 30 latest Tweets for each coin and analyzes the sentiment to give a total score of sentiment. Each word is given a value between -5 and 5 for the level of enthusiasm for each coin using the AFINN database."
+        app:layout_constraintBottom_toTopOf="@+id/graph_button"
+        app:layout_constraintTop_toBottomOf="@+id/graph"
+        tools:layout_editor_absoluteX="0dp" />
 
 
 </android.support.constraint.ConstraintLayout>
