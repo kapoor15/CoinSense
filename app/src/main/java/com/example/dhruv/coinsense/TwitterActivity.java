@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -35,6 +37,43 @@ public class TwitterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_twitter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.id_getTweets) {
+            startActivity(new Intent(getApplicationContext(), TwitterActivity.class));
+            return true;
+        }
+
+        if (id == R.id.id_Sentiment) {
+            startActivity(new Intent(getApplicationContext(), SentimentActivity.class));
+            return true;
+        }
+
+        if (id == R.id.id_aboutUs) {
+            startActivity(new Intent(getApplicationContext(), AboutUsActivity.class));
+            return true;
+        }
+
+        if (id == R.id.id_coinInfo) {
+            startActivity(new Intent(getApplicationContext(), InfoActivity.class));
+            return true;
+        }
+
+        if (id == R.id.id_home) {
+            startActivity(new Intent(getApplicationContext(), CurrencyActivity.class));
+            return true;
+        }
+
+        return true;
     }
 
     public void getTweets(View v) throws TwitterException {

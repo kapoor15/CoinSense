@@ -1,10 +1,13 @@
 package com.example.dhruv.coinsense;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Spinner;
 
@@ -38,6 +41,43 @@ public class SentimentActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.id_getTweets) {
+            startActivity(new Intent(getApplicationContext(), TwitterActivity.class));
+            return true;
+        }
+
+        if (id == R.id.id_Sentiment) {
+            startActivity(new Intent(getApplicationContext(), SentimentActivity.class));
+            return true;
+        }
+
+        if (id == R.id.id_aboutUs) {
+            startActivity(new Intent(getApplicationContext(), AboutUsActivity.class));
+            return true;
+        }
+
+        if (id == R.id.id_coinInfo) {
+            startActivity(new Intent(getApplicationContext(), InfoActivity.class));
+            return true;
+        }
+
+        if (id == R.id.id_home) {
+            startActivity(new Intent(getApplicationContext(), CurrencyActivity.class));
+            return true;
+        }
+
+        return true;
     }
 
     public ArrayList<String> getTweets(String coin) {

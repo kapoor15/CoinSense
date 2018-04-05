@@ -2,8 +2,32 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_settings"
+        android:title="getTweets"
+        android:id="@+id/id_getTweets"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        app:showAsAction="never" />
+
+    <item
+        android:title="About Us"
+        android:id="@+id/id_aboutUs"
+        android:orderInCategory="101"
+        app:showAsAction="never" />
+
+    <item
+        android:title="Coin Info"
+        android:id="@+id/id_coinInfo"
+        android:orderInCategory="102"
+        app:showAsAction="never" />
+
+    <item
+        android:title="Sentiment"
+        android:id="@+id/id_Sentiment"
+        android:orderInCategory="103"
+        app:showAsAction="never" />
+
+    <item
+        android:title="Home"
+        android:id="@+id/id_home"
+        android:orderInCategory="104"
         app:showAsAction="never" />
 </menu>
