@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +15,11 @@ import android.widget.Toast;
 import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
@@ -32,11 +38,53 @@ import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 
 public class TwitterActivity extends AppCompatActivity {
+    DatabaseReference root;
+    FirebaseDatabase database;
+    FirebaseUser user;
+    String CurrentUser;
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_twitter);
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        database = FirebaseDatabase.getInstance();
+        root = database.getReference();
+        user = firebaseAuth.getInstance().getCurrentUser();
+
+        //((TextView) findViewById(R.id.username)).setText(user.getEmail());
+        CurrentUser = user.getEmail().toString();
+        root.child("users").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Is better to use a List, because you don't know the size
+                // of the iterator returned by dataSnapshot.getChildren() to
+                // initialize the array
+                final List<String> cryptos = new ArrayList<String>();
+
+                for (DataSnapshot u: dataSnapshot.getChildren()) {
+                    if (u.child("email").getValue(String.class).equals(CurrentUser)) {
+                        cryptos.add(u.child("crypto1").getValue(String.class));
+                        cryptos.add(u.child("crypto2").getValue(String.class));
+                        cryptos.add(u.child("crypto3").getValue(String.class));
+                    }
+                    // String areaName = u.child("areaName").getValue(String.class);
+                    // areas.add(areaName);
+                }
+
+                Spinner cryptoSpinner = (Spinner) findViewById(R.id.choice_spinner);
+                ArrayAdapter<String> areasAdapter = new ArrayAdapter<String>(TwitterActivity.this, android.R.layout.simple_spinner_item, cryptos);
+                areasAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                cryptoSpinner.setAdapter(areasAdapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
@@ -158,6 +206,32 @@ public class TwitterActivity extends AppCompatActivity {
                 price = matcher.group(1);
             }
             ((TextView) findViewById(R.id.price_text)).setText("Price of Verge in USD is "
+                    + price);
+        } else if (selection.equalsIgnoreCase("Stellar")) {
+            DefaultHttpClient httpClient = new DefaultHttpClient();
+            HttpGet httpGet = new HttpGet("https://coinmarketcap.com/currencies/stellar/");
+            ResponseHandler<String> resHandler = new BasicResponseHandler();
+            String page = httpClient.execute(httpGet, resHandler);
+            Pattern pattern = Pattern.compile("data-currency-price data-usd=(.*?)>");
+            Matcher matcher = pattern.matcher(page);
+            String price = "";
+            if (matcher.find()) {
+                price = matcher.group(1);
+            }
+            ((TextView) findViewById(R.id.price_text)).setText("Price of Stellar in USD is "
+                    + price);
+        } else if (selection.equalsIgnoreCase("Litecoin")) {
+            DefaultHttpClient httpClient = new DefaultHttpClient();
+            HttpGet httpGet = new HttpGet("https://coinmarketcap.com/currencies/litecoin/");
+            ResponseHandler<String> resHandler = new BasicResponseHandler();
+            String page = httpClient.execute(httpGet, resHandler);
+            Pattern pattern = Pattern.compile("data-currency-price data-usd=(.*?)>");
+            Matcher matcher = pattern.matcher(page);
+            String price = "";
+            if (matcher.find()) {
+                price = matcher.group(1);
+            }
+            ((TextView) findViewById(R.id.price_text)).setText("Price of Litecoin in USD is "
                     + price);
         }
 
