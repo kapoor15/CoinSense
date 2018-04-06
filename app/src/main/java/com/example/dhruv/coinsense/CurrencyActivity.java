@@ -29,6 +29,7 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -47,6 +48,13 @@ public class CurrencyActivity extends AppCompatActivity {
     FirebaseUser user;
     String CurrentUser;
     FirebaseAuth firebaseAuth;
+    String p1;
+    String p2;
+    String p3;
+    String uid;
+    String oldprice1;
+    String oldprice2;
+    String oldprice3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,38 +65,49 @@ public class CurrencyActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         root = database.getReference();
         user = firebaseAuth.getInstance().getCurrentUser();
+        p1 = "0";
+        p2 = "0";
+        p3 = "0";
 
         //((TextView) findViewById(R.id.username)).setText(user.getEmail());
         CurrentUser = user.getEmail().toString();
-        root.child("users").addValueEventListener(new ValueEventListener() {
+
+        root.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // Is better to use a List, because you don't know the size
-                // of the iterator returned by dataSnapshot.getChildren() to
-                // initialize the array
                 final List<String> cryptos = new ArrayList<String>();
-
                 for (DataSnapshot u: dataSnapshot.getChildren()) {
-                    if (u.child("email").getValue(String.class).equals(CurrentUser)) {
-                        cryptos.add(u.child("crypto1").getValue(String.class));
-                        cryptos.add(u.child("crypto2").getValue(String.class));
-                        cryptos.add(u.child("crypto3").getValue(String.class));
+                    if (u.child("email").getValue(String.class) != null) {
+                        if (u.child("email").getValue(String.class).equals(CurrentUser)) {
+                            uid = u.getKey();
+                            cryptos.add(u.child("crypto1").getValue(String.class));
+                            cryptos.add(u.child("crypto2").getValue(String.class));
+                            cryptos.add(u.child("crypto3").getValue(String.class));
+                            try {
+                                oldprice1 = u.child("p1").getValue(String.class);
+                                oldprice2 = u.child("p2").getValue(String.class);
+                                oldprice3 = u.child("p3").getValue(String.class);
+                               p1 = getprice(u.child("crypto1").getValue(String.class));
+                               p2 = getprice(u.child("crypto2").getValue(String.class));
+                               p3 = getprice(u.child("crypto3").getValue(String.class));
+                             } catch(IOException ie) {
+                                ie.printStackTrace();
+                             }
+                        }
                     }
-                   // String areaName = u.child("areaName").getValue(String.class);
-                   // areas.add(areaName);
                 }
 
                 Spinner cryptoSpinner = (Spinner) findViewById(R.id.choice_spinner);
                 ArrayAdapter<String> areasAdapter = new ArrayAdapter<String>(CurrencyActivity.this, android.R.layout.simple_spinner_item, cryptos);
                 areasAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 cryptoSpinner.setAdapter(areasAdapter);
-            }
-
-            @Override
+            } @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
         });
+
+
         //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
        //((TextView) findViewById(R.id.username)).setText(user.getEmail());
     }
@@ -131,9 +150,13 @@ public class CurrencyActivity extends AppCompatActivity {
 
 
 
-    public void logout(View v) {
+    public void logout(View v)  {
+
+        root.child("users").child(uid).child("p1").setValue(p1);
+        root.child("users").child(uid).child("p2").setValue(p2);
+        root.child("users").child(uid).child("p3").setValue(p3);
         FirebaseAuth.getInstance().signOut();
-        LoginManager.getInstance().logOut();
+        //LoginManager.getInstance().logOut();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if(user == null) {
         startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
@@ -143,6 +166,99 @@ public class CurrencyActivity extends AppCompatActivity {
         }
     }
 
+    public String getprice(String currency) throws IOException{
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
+
+
+            DefaultHttpClient httpClient = new DefaultHttpClient();
+            HttpGet httpGet = new HttpGet("https://coinmarketcap.com/currencies/" + currency + "/");
+            ResponseHandler<String> resHandler = new BasicResponseHandler();
+            String page = httpClient.execute(httpGet, resHandler);
+            Pattern pattern = Pattern.compile("data-currency-price data-usd=(.*?)>");
+            Matcher matcher = pattern.matcher(page);
+            String price = "";
+            if (matcher.find()) {
+                price = matcher.group(1);
+            }
+
+            return price;
+
+    }
+
+    public void prediction(View v) throws IOException {
+        String selection = (String) ((Spinner) findViewById(R.id.choice_spinner)).getSelectedItem();
+        String newprice = getprice(selection);
+        final int index =  ((Spinner) findViewById(R.id.choice_spinner)).getSelectedItemPosition() + 1;
+
+        String oldprice = "";
+
+        if (index == 1) {
+            //final String pricetemp;
+            oldprice = oldprice1;
+           // System.out.println("!!!!!!!!!!!!!!!!!!!!!!##############" + oldprice);
+        } else if (index == 2) {
+            oldprice = oldprice2;
+           // System.out.println("!!!!!!!!!!!!!!!!!!!!!!##############" + oldprice);
+
+        } else if (index == 3) {
+            oldprice = oldprice3;
+            //System.out.println("!!!!!!!!!!!!!!!!!!!!!!##############" + oldprice);
+
+        }
+       /* CurrentUser = user.getEmail().toString();
+        //String oldprice;
+        root.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                final List<String> cryptoprice = new ArrayList<String>();
+System.out.println("&&&&&&&&&&&&&&&&&&&&&");
+                for (DataSnapshot u: dataSnapshot.getChildren()) {
+                    if (u.child("email").getValue(String.class) != null) {
+                        if (u.child("email").getValue(String.class).equals(CurrentUser)) {
+                            if (index == 1) {
+                                //final String pricetemp;
+                                oldprice = u.child("p1").getValue(String.class);
+                                System.out.println("!!!!!!!!!!!!!!!!!!!!!!##############" + oldprice);
+                            } else if (index == 2) {
+                                oldprice = u.child("p2").getValue(String.class);
+                                System.out.println("!!!!!!!!!!!!!!!!!!!!!!##############" + oldprice);
+
+                            } else if (index == 3) {
+                                oldprice = u.child("p3").getValue(String.class);
+                                System.out.println("!!!!!!!!!!!!!!!!!!!!!!##############" + oldprice);
+
+                            }
+
+                        }
+                    }
+                }
+
+
+            } @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });*/
+
+        int indexold1 = oldprice.indexOf('"');
+        int indexold2 = oldprice.lastIndexOf('"');
+        oldprice = oldprice.substring(indexold1 + 1, indexold2);
+
+        System.out.println("#########" + newprice);
+        int indexnew1 = newprice.indexOf('"');
+        System.out.println("#########11111" + indexnew1);
+        int indexnew2 = newprice.lastIndexOf('"');
+        System.out.println("#########2222" + indexnew2);
+        newprice = newprice.substring(indexnew1 + 1, indexnew2);
+
+
+
+        double percentage = ((Double.parseDouble(newprice) - Double.parseDouble(oldprice)) / Double.parseDouble(oldprice)) * 100;
+
+        ((TextView) findViewById(R.id.price_text)).setText("Price fluctuation of " + selection + " is " + percentage + "%");
+    }
 
     public void checkPrice(View v) throws IOException {
 
