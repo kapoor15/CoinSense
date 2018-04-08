@@ -341,5 +341,12 @@ System.out.println("&&&&&&&&&&&&&&&&&&&&&");
 
 
 
+
+
+    }
+
+    public void history(View v) {
+        startActivity(new Intent(getApplicationContext(), HistoryActivity.class));
+
     }
 }

@@ -32,8 +32,12 @@
         <activity
             android:name=".SentimentActivity"
             android:label="@string/title_activity_sentiment"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".FacebookLogin" />
+        <activity
+            android:name=".HistoryActivity"
+            android:label="@string/title_activity_history"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".FacebookLogin"></activity>
     </application>
 
 </manifest>
