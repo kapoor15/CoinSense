@@ -41,6 +41,7 @@ public class HistoryActivity extends AppCompatActivity {
         ArrayList<Double> closes = new ArrayList<Double>();
         ArrayList<Double> lows = new ArrayList<Double>();
         ArrayList<Double> highs = new ArrayList<Double>();
+        ArrayList<Double> caps = new ArrayList<Double>();
 
 
 
@@ -94,13 +95,41 @@ public class HistoryActivity extends AppCompatActivity {
         }
         averagePrice = averagePrice / prices.size();
 
+        //for market cap
+        pattern = Pattern.compile("data-format-market-cap data-format-value=(.*?)>");
+        matcher = pattern.matcher(page);
+        String cap = "";
+
+        for (int i = 0; i < getDays(); i++) {
+            matcher.find();
+            cap = matcher.group(1);
+            cap = cap.substring(1, cap.length() - 5);
+            caps.add(Double.parseDouble(cap));
+        }
+
+        double minCap = 999999999;
+        double maxCap = -1;
+
+        for (int i = 0; i < getDays(); i++) {
+            if (minCap > caps.get(i)) {
+                minCap = caps.get(i);
+            }
+            if (maxCap < caps.get(i)) {
+                maxCap = caps.get(i);
+            }
+        }
+
         String name = ((Spinner) findViewById(R.id.currency_spinner)).getSelectedItem().toString();
 
         ((TextView)findViewById(R.id.analysis_text)).setText("Average Price for " + name + " over " +
         getDays() + " days is " + averagePrice + "\n" + "Maximum Price for " + name + " over " +
                 getDays() + " days is " + maxPrice +
         "\n" + "Minimum Price for " + name + " over " +
-                getDays() + " days is " + minPrice);
+                getDays() + " days is " + minPrice + "\n" + "Maximum Market Cap for " + name + " over " +
+        getDays() + " days is " + maxCap + "k" +
+                "\n" + "Minimum Market Cap for " + name + " over " +
+                getDays() + " days is " + minCap + "k"
+                );
 
 
     }
