@@ -25,16 +25,9 @@
         <item>Stellar</item>
         <item>EOS</item>
         <item>Dash</item>
-        <item>IOTA</item>
         <item>Monero</item>
-        <item>NEM</item>
-        <item>Ethereum Classic</item>
-        <item>TRON</item>
-        <item>VeChain</item>
-        <item>Tether</item>
         <item>Lisk</item>
         <item>Bitcoin Gold</item>
-        <item>Qtum</item>
     </string-array>
 
     <string-array name="CryptocurrencyChoice2">

@@ -9,8 +9,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.LegendRenderer;
 import com.jjoe64.graphview.ValueDependentColor;
@@ -31,14 +39,67 @@ import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 
+
 public class SentimentActivity extends AppCompatActivity {
 
+    DatabaseReference root;
+    FirebaseDatabase database;
+    FirebaseUser user;
+    String CurrentUser;
+    FirebaseAuth firebaseAuth;
+
+    double crypto1;
+    double crypto2;
+    double crypto3;
+    String c1;
+    String c2;
+    String c3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sentiment);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
+        root = database.getReference();
+        user = firebaseAuth.getInstance().getCurrentUser();
+
+        CurrentUser = user.getEmail().toString();
+        root.child("users").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Is better to use a List, because you don't know the size
+                // of the iterator returned by dataSnapshot.getChildren() to
+                // initialize the array
+
+                System.out.println("WE ARE HEREEEEEEEEEEEEEE");
+                for (DataSnapshot u: dataSnapshot.getChildren()) {
+                    if (u.child("email").getValue(String.class) != null) {
+                        if (u.child("email").getValue(String.class).equals(CurrentUser)) {
+
+                            System.out.println("WE ARE NOWWWWW  HEREEEEEEEEEEEEEE");
+                            c1 = (u.child("crypto1").getValue(String.class));
+                            c2 = (u.child("crypto2").getValue(String.class));
+                            c3 = (u.child("crypto3").getValue(String.class));
+                        }
+
+                    }
+                    // String areaName = u.child("areaName").getValue(String.class);
+                    // areas.add(areaName);
+                }
+
+                crypto1 = getValues(getTweets(c1));
+
+                crypto2 = getValues(getTweets(c2));
+                crypto3 = getValues(getTweets(c3));
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
 
     }
@@ -138,25 +199,24 @@ public class SentimentActivity extends AppCompatActivity {
     public void makeGraph(View v) {
         GraphView graph = (GraphView) findViewById(R.id.graph);
         graph.removeAllSeries();
+
         //get data points
-        double bitcoin = getValues(getTweets("Bitcoin"));
-        double ethereum = getValues(getTweets("Ethereum"));
-        double monero = getValues(getTweets("Monero"));
+
         BarGraphSeries<DataPoint> series = new BarGraphSeries<>(new DataPoint[] {
                 new DataPoint(0, 0),
                 new DataPoint(4, 0)
         });
 
         BarGraphSeries<DataPoint> first = new BarGraphSeries<>(new DataPoint[] {
-                new DataPoint(1, bitcoin)
+                new DataPoint(1,crypto1)
         });
 
         BarGraphSeries<DataPoint> second = new BarGraphSeries<>(new DataPoint[] {
-                new DataPoint(2, ethereum)
+                new DataPoint(2, crypto2)
         });
 
         BarGraphSeries<DataPoint> third = new BarGraphSeries<>(new DataPoint[] {
-                new DataPoint(3, monero)
+                new DataPoint(3, crypto3)
         });
 
         //set coloring
@@ -195,7 +255,7 @@ public class SentimentActivity extends AppCompatActivity {
         //graph.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);
 
         StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graph);
-        staticLabelsFormatter.setHorizontalLabels(new String[] {"Bitcoin", "Ethereum", "Monero"});
+        staticLabelsFormatter.setHorizontalLabels(new String[] {c1, c2, c3});
         graph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
 
 
