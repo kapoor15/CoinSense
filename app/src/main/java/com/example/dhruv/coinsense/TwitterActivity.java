@@ -65,13 +65,15 @@ public class TwitterActivity extends AppCompatActivity {
                 final List<String> cryptos = new ArrayList<String>();
 
                 for (DataSnapshot u: dataSnapshot.getChildren()) {
-                    if (u.child("email").getValue(String.class).equals(CurrentUser)) {
-                        cryptos.add(u.child("crypto1").getValue(String.class));
-                        cryptos.add(u.child("crypto2").getValue(String.class));
-                        cryptos.add(u.child("crypto3").getValue(String.class));
+                    if (u.child("email").getValue(String.class) != null) {
+                        if (u.child("email").getValue(String.class).equals(CurrentUser)) {
+                            cryptos.add(u.child("crypto1").getValue(String.class));
+                            cryptos.add(u.child("crypto2").getValue(String.class));
+                            cryptos.add(u.child("crypto3").getValue(String.class));
+                        }
+                        // String areaName = u.child("areaName").getValue(String.class);
+                        // areas.add(areaName);
                     }
-                    // String areaName = u.child("areaName").getValue(String.class);
-                    // areas.add(areaName);
                 }
 
                 Spinner cryptoSpinner = (Spinner) findViewById(R.id.choice_spinner);
