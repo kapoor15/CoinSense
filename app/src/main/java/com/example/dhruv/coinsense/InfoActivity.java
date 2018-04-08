@@ -158,6 +158,136 @@ public class InfoActivity extends AppCompatActivity {
 
             ((TextView) findViewById(R.id.info_text)).setText(answer);
         }
+        else if (choice.equalsIgnoreCase("stellar"))
+        {
+            String answer = "The Stellar network is a distributed blockchain based ledger and " +
+                    "database that facilitates cross-asset transfers of value, including payments." +
+                    " The native digital asset of Stellar is called Lumens (XLM).The Stellar network is an open source," +
+                    " distributed, and community owned network used to facilitate cross-asset transfers of value. " +
+                    "It doesn’t handle all software types like Ethereum, but it is one of the only other choices for ICOs " +
+                    "aside from Ethereum (but not the only other choice).\n" +
+                    "Like Ripple, Stellar can handle exchanges between fiat-based currencies and between cryptocurrencies.\n" +
+                    "Lumens have low fees (each transaction has a minor fee—0.00001 lumens—associated with it).\n" +
+                    "The Stellar network, and thus Lumens and any other asset using the Lumen network," +
+                    " has fast transaction speeds that rival Ripple.";
+            ((TextView) findViewById(R.id.info_text)).setText(answer);
+        }
+        else if (choice.equalsIgnoreCase("litecoin"))
+        {
+            String answer = "Litecoin is a peer-to-peer Internet currency that enables instant, near-zero cost payments to anyone in the world." +
+                    " Litecoin is an open source, global payment network that is fully decentralized. " +
+                    "Mathematics secures the network and empowers individuals to control their own finances.\n" +
+                    "\n" +
+                    "Compared to Bitcoin, Litecoin features faster transaction confirmation times (2.5 minutes) " +
+                    "and improved storage efficiency.\n" +
+                    "\n" +
+                    "With substantial industry support, trade volume, and liquidity, " +
+                    "Litecoin is a proven medium of commerce complementary to Bitcoin. Litecoin is " +
+                    "the second most popular cryptocurrency.";
+            ((TextView) findViewById(R.id.info_text)).setText(answer);
+        }
+        else if (choice.equalsIgnoreCase("Ripple"))
+        {
+            String answer = "The digital currency, XRP, acts as a bridge currency to other currencies. It does not discriminate between one fiat/crypto currency and another, and thus, makes it easy for any currency to be exchanged for another." +
+                    " Each currency on the ecosystem has its own gateway e.g. CADBluzelle, BTCbitstamp, and USDsnapswap. " +
+                    "If David wanted bitcoins as payment for the services rendered to Lawrence, Lawrence does not necessarily have to have bitcoins. He can send the payment to his gateway in Canadian dollars (CAD), " +
+                    "and David can receive bitcoins from his gateway. One gateway is not needed to initiate a complete a transaction, multiple gateways can be used, forming a chain of trust rippling across the users.\n" +
+                    "\n";
+            ((TextView) findViewById(R.id.info_text)).setText(answer);
+        }
+        else if (choice.equalsIgnoreCase("Bitcoin Cash"))
+        {
+            String answer = "Bitcoin Cash (BCH) is an upgraded version of the Bitcoin Core software. " +
+                    "It was released on August 1st, 2017.Bitcoin Cash was created to bring back the essential qualities of money inherent in the original Bitcoin software. Over the years, these qualities were filtered out of Bitcoin Core and progress was stifled by various people, organizations, and companies involved in Bitcoin protocol development. The result is that Bitcoin Core is currently unusable as money due to increasingly high fees per transactions and transfer times taking hours to days. " +
+                    "This is all because of the problems created by Bitcoin Core’s blocks being full.";
+            ((TextView) findViewById(R.id.info_text)).setText(answer);
+        }
+
+        else if(choice.equalsIgnoreCase("Cardano"))
+        {
+            String answer = "Cardano is home to the Ada cryptocurrency, which can be used to send and receive digital funds. This digital cash represents the future of money, making possible fast, direct transfers that are guaranteed to be secure through the use of cryptography.\n" +
+                    "\n" +
+                    "Cardano is more than just a cryptocurrency, however, it is a technological " +
+                    "platform that will be capable of running financial applications currently used " +
+                    "every day by individuals, organisations and governments all around the world. " +
+                    "The platform is being constructed in layers, which gives the system the flexibility " +
+                    "to be more easily maintained and allow for upgrades by way of soft forks. " +
+                    "After the settlement layer that will run Ada is complete, a separate computing " +
+                    "layer will be built to handle smart contracts, the digital legal agreements that " +
+                    "will underpin future commerce and business. Cardano will also run decentralised applications, or dapps," +
+                    " services not controlled by any single party but instead operate on a blockchain.";
+            ((TextView) findViewById(R.id.info_text)).setText(answer);
+        }
+        else if(choice.equalsIgnoreCase("Neo"))
+        {
+            String answer = "NEO is a next generation smart economy platform (formerly Antshares) " +
+                    "and China's first open source blockchain that was founded in 2014, " +
+                    "is often known as the “Ethereum of China. NEO uses a smart economy approach to implement its distributed network concept. Its main objective is to digitize assets using the decentralized network of blockchain technology and digital identity.\n" +
+                    "\n" +
+                    "Neo’s main aim is to be the distributed network for “smart economy”. As their website states: " +
+                    "Digital Assets + Digital Identity + Smart Contract = Smart Economy." +
+                    "Neo was developed by Shanghai-based blockchain R&D company “OnChain” and funded by two crowdsales: first crowdsale on October 2015 sold 17.5 million NEO tokens for $550,000 and " +
+                    "the second crowdsale sold the remaining 22.5 million NEO tokens for $4.5 million.";
+
+            ((TextView) findViewById(R.id.info_text)).setText(answer);
+        }
+        else if(choice.equalsIgnoreCase("EOS"))
+        {
+            String answer = "EOS appears to be a direct competitor to Ethereum. Headed by Dan Larimer the founder of two successful crypto coins STEEM and Bitshares, EOS is promising to be a new blockchain operating system faster and more scalable than Ethereum that will allows users to build decentralized applications more efficiently.\n" +
+                    "\n" +
+                    "EOS idea show promise but without a solid community foundation regularly using the coin its too early too predict what will happen in the long term. ";
+
+            ((TextView) findViewById(R.id.info_text)).setText(answer);
+        }
+        else if(choice.equalsIgnoreCase("Dash"))
+        {
+            String answer = "Dashcoin (DSH) is an automatically mutating anonymous cryptocurrency\n" +
+                    "Dashcoin is a Next generation anonymous cryptocurrency and the first automatically " +
+                    "mutating cryptocurrency created with CryptoNote technology. What does this really means? O" +
+                    "ur network code is always up to date with minimal developer cost and close to 0% errors. " +
+                    "You are no longer depending on developers good will." +
+                    " Concentrate less on developers and more on your trades and projects.";
+            ((TextView) findViewById(R.id.info_text)).setText(answer);
+        }
+        else if(choice.equalsIgnoreCase("Monero"))
+        {
+            String answer = "Monero (XMR) is an open-source cryptocurrency " +
+                    "created in April 2014 that focuses on privacy and " +
+                    "decentralization that runs on Windows, macOS, Linux, " +
+                    "Android, iOS, and FreeBSD. Monero uses a public ledger to " +
+                    "record transactions while new units are created through a process " +
+                    "called mining. Monero aims to improve on existing cryptocurrency design by obscuring sender, " +
+                    "recipient and amount of every transaction made as well as making the mining process more egalitarian.";
+            ((TextView) findViewById(R.id.info_text)).setText(answer);
+
+        }
+        else if(choice.equalsIgnoreCase("Lisk"))
+        {
+            String answer = "Lisk is an open source blockchain platform powered by LSK tokens that will allow developers to write decentralized applications in the JavaScript programming language. " +
+                    "Lisk will give developers the ability to build applications on their " +
+                    "own sidechain linked to the Lisk network, with their own custom token.\n" +
+                    "\n" +
+                    "With the goal of making blockchain development more accessible " +
+                    "Lisk was forked from Crypti by Max Kordek and Oliver Beddows in May of 2016. " +
+                    "Shortly after being listed Lisk became the second most popular cryptocurrency traded against Bitcoin.";
+            ((TextView) findViewById(R.id.info_text)).setText(answer);
+        }
+        else if(choice.equalsIgnoreCase("Bitcoin Gold"))
+        {
+            String answer = "Bitcoin Gold hopes to change the paradigm around mining on the Bitcoin blockchain. " +
+                    "According to the founders, the Bitcoin blockchain has become too centralized. " +
+                    "Large companies with huge banks of mining computers now mine the vast majority of Bitcoin. " +
+                    "For the founders of Bitcoin Gold," +
+                    " having large companies control the Bitcoin network defeats the " +
+                    "purpose of a decentralized ledger and peer-to-peer currencies.\n" +
+                    "\n" +
+                    "In response, they’ve initialized the Bitcoin Gold project. " +
+                    "It’s an alternate fork of the Bitcoin blockchain that implements changes that make mining more equitable. " +
+                    "The goal for Bitcoin Gold is to create a network where anyone can become a miner with only basic hardware. " +
+                    "As a result, Bitcoin Gold mining would be spread among many miners, instead of a few large companies.";
+            ((TextView) findViewById(R.id.info_text)).setText(answer);
+        }
+
     }
 
     public void checkPrice(View v) throws IOException {
