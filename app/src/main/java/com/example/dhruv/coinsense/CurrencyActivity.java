@@ -172,8 +172,22 @@ public class CurrencyActivity extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
 
 
+        String adder = currency;
+
+        if (currency.equalsIgnoreCase("Bitcoin cash")) {
+            adder = "bitcoin-cash";
+        }
+
+        if (currency.equalsIgnoreCase("Ethereum Classic")) {
+            adder = "ethereum-classic";
+        }
+
+        if (currency.equalsIgnoreCase("Bitcoin gold")) {
+            adder = "bitcoin-gold";
+        }
+
             DefaultHttpClient httpClient = new DefaultHttpClient();
-            HttpGet httpGet = new HttpGet("https://coinmarketcap.com/currencies/" + currency + "/");
+            HttpGet httpGet = new HttpGet("https://coinmarketcap.com/currencies/" + adder + "/");
             ResponseHandler<String> resHandler = new BasicResponseHandler();
             String page = httpClient.execute(httpGet, resHandler);
             Pattern pattern = Pattern.compile("data-currency-price data-usd=(.*?)>");
@@ -338,9 +352,6 @@ System.out.println("&&&&&&&&&&&&&&&&&&&&&");
             ((TextView) findViewById(R.id.price_text)).setText("Price of Litecoin in USD is "
                     + price);
         }
-
-
-
 
 
     }
