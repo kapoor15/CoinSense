@@ -360,4 +360,8 @@ System.out.println("&&&&&&&&&&&&&&&&&&&&&");
         startActivity(new Intent(getApplicationContext(), HistoryActivity.class));
 
     }
+
+    public void graph(View v) {
+        startActivity(new Intent(getApplicationContext(), GraphActivity.class));
+    }
 }
