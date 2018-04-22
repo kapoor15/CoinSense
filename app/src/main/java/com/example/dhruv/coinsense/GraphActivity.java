@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Spinner;
@@ -121,7 +122,11 @@ public class GraphActivity extends AppCompatActivity {
         String days = ((Spinner) findViewById(R.id.days_spinner)).getSelectedItem().toString();
         return Integer.parseInt(days);
     }
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
