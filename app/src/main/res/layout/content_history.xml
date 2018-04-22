@@ -6,44 +6,49 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.dhruv.coinsense.HistoryActivity"
+    tools:layout_editor_absoluteY="81dp"
     tools:showIn="@layout/activity_history">
 
     <TextView
         android:id="@+id/currency_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="50dp"
+        android:layout_width="125dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="54dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="35dp"
         android:text="Choose Currency"
+        app:layout_constraintEnd_toStartOf="@+id/currency_spinner"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/header" />
 
     <Spinner
         android:id="@+id/currency_spinner"
-        android:layout_width="167dp"
-        android:layout_height="23dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="48dp"
+        android:layout_width="170dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginTop="35dp"
         android:entries='@array/CryptocurrencyChoice4'
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/header" />
 
     <TextView
         android:id="@+id/days_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="150dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="18dp"
         android:text="Select number of days"
+        app:layout_constraintEnd_toStartOf="@+id/days_spinner"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/currency_text" />
 
     <Spinner
         android:id="@+id/days_spinner"
-        android:layout_width="158dp"
-        android:layout_height="32dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginTop="26dp"
+        android:layout_width="170dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginTop="18dp"
         android:entries="@array/Days"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/currency_spinner" />
@@ -52,19 +57,92 @@
         android:id="@+id/analyze_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="136dp"
         android:layout_marginStart="136dp"
-        android:layout_marginTop="16dp"
-        android:text="Analyze"
+        android:layout_marginTop="18dp"
         android:onClick="analyze"
+        android:text="Analyze"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/days_spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/days_text" />
 
     <TextView
         android:id="@+id/analysis_text"
         android:layout_width="331dp"
-        android:layout_height="280dp"
+        android:layout_height="200dp"
         android:layout_marginBottom="14dp"
+        android:layout_marginEnd="13dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/analyze_button" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/header"
+        android:layout_width="359dp"
+        android:layout_height="82dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:background="#a0c2ef"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <Button
+            android:id="@+id/go_button"
+            android:layout_width="74dp"
+            android:layout_height="32dp"
+
+            android:layout_marginBottom="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="122dp"
+            android:layout_marginStart="140dp"
+            android:onClick="checkPrice"
+            android:text="Get price"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toTopOf="@+id/price_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/price_text"
+            android:layout_width="196dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/go_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/choice_spinner"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Spinner
+            android:id="@+id/choice_spinner"
+            android:layout_width="106dp"
+            android:layout_height="31dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="33dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:background="#d0dced"
+            android:entries="@array/currency_array"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/go_button"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.137" />
+
+    </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>
