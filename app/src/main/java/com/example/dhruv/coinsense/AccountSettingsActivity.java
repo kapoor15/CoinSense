@@ -10,12 +10,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-<<<<<<< HEAD
+
 import android.util.Log;
-=======
+
 import android.view.Menu;
 import android.view.MenuItem;
->>>>>>> 7c0a07dd6664e9414c6b5dafe9c03d39539c1eaa
+
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;

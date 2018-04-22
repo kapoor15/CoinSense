@@ -176,9 +176,11 @@
         android:layout_height="30dp"
         android:layout_marginBottom="23dp"
         android:layout_marginEnd="30dp"
+        android:layout_marginTop="20dp"
         android:entries="@array/CryptocurrencyChoice2"
         app:layout_constraintBottom_toTopOf="@+id/Crypto3"
-        app:layout_constraintEnd_toStartOf="@+id/updatec2" />
+        app:layout_constraintEnd_toStartOf="@+id/updatec2"
+        app:layout_constraintTop_toBottomOf="@+id/Crypto1" />
 
     <Spinner
         android:id="@+id/Crypto3"

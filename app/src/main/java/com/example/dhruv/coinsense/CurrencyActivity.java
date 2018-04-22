@@ -521,18 +521,10 @@ public class CurrencyActivity extends AppCompatActivity {
 
 
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 7c0a07dd6664e9414c6b5dafe9c03d39539c1eaa
     public void AccSettings(View v)
     {
         startActivity(new Intent(getApplicationContext(), AccountSettingsActivity.class));
     }
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 7c0a07dd6664e9414c6b5dafe9c03d39539c1eaa
 
