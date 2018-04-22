@@ -168,6 +168,11 @@ public class CurrencyActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), HistoryActivity.class));
             return true;
         }
+
+        if (id == R.id.id_graph) {
+            startActivity(new Intent(getApplicationContext(), GraphActivity.class));
+            return true;
+        }
         return true;
     }
 
@@ -505,8 +510,20 @@ public class CurrencyActivity extends AppCompatActivity {
     //}
 
 
+    public void graph(View v) {
+        startActivity(new Intent(getApplicationContext(), GraphActivity.class));
+    }
 
 
 
-
+    }
+<<<<<<< HEAD
+    public void AccSettings(View v)
+    {
+        startActivity(new Intent(getApplicationContext(), AccountSettingsActivity.class));
+    }
 }
+=======
+
+
+>>>>>>> f2aca2ebf7896fab30820c7e35af7bc95e4983df

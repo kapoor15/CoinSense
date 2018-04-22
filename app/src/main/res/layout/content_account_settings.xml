@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.dhruv.coinsense.AccountSettingsActivity"
+    tools:layout_editor_absoluteY="81dp"
+    tools:showIn="@layout/activity_account_settings">
+
+    <Button
+        android:id="@+id/Updatepass"
+        android:layout_width="104dp"
+        android:layout_height="38dp"
+        android:layout_marginBottom="105dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="66dp"
+        android:onClick="updatePassword"
+        android:text="Update"
+        app:layout_constraintBottom_toTopOf="@+id/updatec1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Email" />
+
+    <Button
+        android:id="@+id/updatec2"
+        android:layout_width="89dp"
+        android:layout_height="36dp"
+        android:layout_marginBottom="23dp"
+        android:layout_marginEnd="25dp"
+        android:onClick="updatec2"
+        android:text="CHANGe"
+        app:layout_constraintBottom_toTopOf="@+id/updatec3"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/updatec3"
+        android:layout_width="89dp"
+        android:layout_height="36dp"
+        android:layout_marginBottom="139dp"
+        android:layout_marginEnd="25dp"
+        android:onClick="updatec3"
+        android:text="Change"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="97dp"
+        android:layout_height="26dp"
+        android:layout_marginBottom="149dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginStart="21dp"
+        android:text="Currency 3"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/Crypto3"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="104dp"
+        android:layout_height="33dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="16dp"
+        android:text="Currency 2"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView23"
+        app:layout_constraintEnd_toStartOf="@+id/Crypto2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="104dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="22dp"
+        android:layout_marginStart="16dp"
+        android:text="Currency 1"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView21"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/Email"
+        android:layout_width="173dp"
+        android:layout_height="29dp"
+        android:layout_marginBottom="82dp"
+        android:layout_marginEnd="84dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="30dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/Updatepass"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="136dp"
+        android:layout_height="29dp"
+        android:layout_marginBottom="66dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="30dp"
+        android:text="Email"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView27"
+        app:layout_constraintEnd_toStartOf="@+id/Email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+    <Button
+        android:id="@+id/updatec1"
+        android:layout_width="89dp"
+        android:layout_height="36dp"
+        android:layout_marginBottom="14dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginStart="30dp"
+        android:onClick="updatec1"
+        android:text="Change"
+        app:layout_constraintBottom_toTopOf="@+id/updatec2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Crypto1" />
+
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="213dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="148dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="16dp"
+        android:text="Account Settings"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/Email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="202dp"
+        android:layout_height="38dp"
+        android:layout_marginBottom="111dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="21dp"
+        android:text="Update Password"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView10"
+        app:layout_constraintEnd_toStartOf="@+id/Updatepass"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/Crypto1"
+        android:layout_width="123dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="24dp"
+        android:entries="@array/CryptocurrencyChoice1"
+        app:layout_constraintBottom_toTopOf="@+id/Crypto2"
+        app:layout_constraintStart_toEndOf="@+id/textView10" />
+
+    <Spinner
+        android:id="@+id/Crypto2"
+        android:layout_width="123dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="23dp"
+        android:layout_marginEnd="30dp"
+        android:entries="@array/CryptocurrencyChoice2"
+        app:layout_constraintBottom_toTopOf="@+id/Crypto3"
+        app:layout_constraintEnd_toStartOf="@+id/updatec2" />
+
+    <Spinner
+        android:id="@+id/Crypto3"
+        android:layout_width="124dp"
+        android:layout_height="27dp"
+        android:layout_marginBottom="49dp"
+        android:layout_marginEnd="30dp"
+        android:entries="@array/CryptocurrencyChoice3"
+        app:layout_constraintBottom_toTopOf="@+id/toHome"
+        app:layout_constraintEnd_toStartOf="@+id/updatec3" />
+
+    <Button
+        android:id="@+id/toHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="51dp"
+        android:layout_marginEnd="187dp"
+        android:layout_marginStart="136dp"
+        android:onClick="toHome"
+        android:text="Home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</android.support.constraint.ConstraintLayout>
