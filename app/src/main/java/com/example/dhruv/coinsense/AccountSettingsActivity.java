@@ -5,15 +5,21 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -38,6 +44,7 @@ public class AccountSettingsActivity extends AppCompatActivity {
     String crypto3;
     String uid;
     Resources res;
+    EditText newpass;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -177,10 +184,25 @@ public class AccountSettingsActivity extends AppCompatActivity {
             }
         });
     }
-    void updatePassword(View v)
-    {
+    void updatePassword(View v) {
+        newpass = (EditText) findViewById(R.id.NewPass);
+        String n = newpass.getText().toString().trim();
 
-        
+        if ( n == null || n.equals("")) {
+            Toast.makeText(AccountSettingsActivity.this, "Invalid Password Input", Toast.LENGTH_SHORT).show();
+
+        }
+        else{
+            user.updatePassword(n)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(AccountSettingsActivity.this, "Password Updated", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+        }
     }
 
     void toHome(View v)
