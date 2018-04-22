@@ -190,6 +190,7 @@ public class HistoryActivity extends AppCompatActivity {
         return Integer.parseInt(days);
     }
 
+<<<<<<< HEAD
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
@@ -229,5 +230,38 @@ public class HistoryActivity extends AppCompatActivity {
             return true;
         }
         return true;
+=======
+    public String getVolume(String currency) throws IOException{
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
+
+        String adder = currency;
+
+        if (currency.equalsIgnoreCase("Bitcoin cash")) {
+            adder = "bitcoin-cash";
+        }
+
+        if (currency.equalsIgnoreCase("Ethereum Classic")) {
+            adder = "ethereum-classic";
+        }
+
+        if (currency.equalsIgnoreCase("Bitcoin gold")) {
+            adder = "bitcoin-gold";
+        }
+
+        DefaultHttpClient httpClient = new DefaultHttpClient();
+        HttpGet httpGet = new HttpGet("https://coinmarketcap.com/currencies/" + adder + "/");
+        ResponseHandler<String> resHandler = new BasicResponseHandler();
+        String page = httpClient.execute(httpGet, resHandler);
+        Pattern pattern = Pattern.compile("data-currency-volume data-usd=(.*?)>");
+        Matcher matcher = pattern.matcher(page);
+        String volume = "";
+        if (matcher.find()) {
+            volume = matcher.group(1);
+        }
+
+        return volume;
+>>>>>>> 65f0de8e6290e8321dcc5f980a086cf836496c44
     }
 }

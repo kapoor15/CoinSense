@@ -174,4 +174,39 @@ public class AboutUsActivity extends AppCompatActivity {
             Toast.makeText(AboutUsActivity.this, "Signout failed", Toast.LENGTH_SHORT).show();
         }
     }
+
+    public String getPrice(String currency) throws IOException{
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
+
+
+        String adder = currency;
+
+        if (currency.equalsIgnoreCase("Bitcoin cash")) {
+            adder = "bitcoin-cash";
+        }
+
+        if (currency.equalsIgnoreCase("Ethereum Classic")) {
+            adder = "ethereum-classic";
+        }
+
+        if (currency.equalsIgnoreCase("Bitcoin gold")) {
+            adder = "bitcoin-gold";
+        }
+
+        DefaultHttpClient httpClient = new DefaultHttpClient();
+        HttpGet httpGet = new HttpGet("https://coinmarketcap.com/currencies/" + adder + "/");
+        ResponseHandler<String> resHandler = new BasicResponseHandler();
+        String page = httpClient.execute(httpGet, resHandler);
+        Pattern pattern = Pattern.compile("data-currency-price data-usd=(.*?)>");
+        Matcher matcher = pattern.matcher(page);
+        String price = "";
+        if (matcher.find()) {
+            price = matcher.group(1);
+        }
+
+        return price;
+
+    }
 }

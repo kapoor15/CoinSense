@@ -178,8 +178,22 @@ public class CurrencyActivity extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
 
 
+        String adder = currency;
+
+        if (currency.equalsIgnoreCase("Bitcoin cash")) {
+            adder = "bitcoin-cash";
+        }
+
+        if (currency.equalsIgnoreCase("Ethereum Classic")) {
+            adder = "ethereum-classic";
+        }
+
+        if (currency.equalsIgnoreCase("Bitcoin gold")) {
+            adder = "bitcoin-gold";
+        }
+
             DefaultHttpClient httpClient = new DefaultHttpClient();
-            HttpGet httpGet = new HttpGet("https://coinmarketcap.com/currencies/" + currency + "/");
+            HttpGet httpGet = new HttpGet("https://coinmarketcap.com/currencies/" + adder + "/");
             ResponseHandler<String> resHandler = new BasicResponseHandler();
             String page = httpClient.execute(httpGet, resHandler);
             Pattern pattern = Pattern.compile("data-currency-price data-usd=(.*?)>");
@@ -358,9 +372,16 @@ public class CurrencyActivity extends AppCompatActivity {
         }*/
 
 
+<<<<<<< HEAD
 
 
     //}
 
+=======
+    }
+
+    public void history(View v) {
+        startActivity(new Intent(getApplicationContext(), HistoryActivity.class));
+>>>>>>> 65f0de8e6290e8321dcc5f980a086cf836496c44
 
 }
