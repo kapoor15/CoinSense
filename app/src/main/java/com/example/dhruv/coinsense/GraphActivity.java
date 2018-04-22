@@ -1,9 +1,11 @@
 package com.example.dhruv.coinsense;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Spinner;
 
@@ -89,6 +91,8 @@ public class GraphActivity extends AppCompatActivity {
         series.setDataPointsRadius(12);
         series.setThickness(8);
         series.setColor(Color.BLACK);
+        String name = ((Spinner) findViewById(R.id.currency_spinner)).getSelectedItem().toString();
+        series.setTitle(name + " Price in $");
 
         StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graph);
         staticLabelsFormatter.setHorizontalLabels(new String[] {startDate, endDate});
@@ -116,5 +120,44 @@ public class GraphActivity extends AppCompatActivity {
     public int getDays() {
         String days = ((Spinner) findViewById(R.id.days_spinner)).getSelectedItem().toString();
         return Integer.parseInt(days);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.id_getTweets) {
+            startActivity(new Intent(getApplicationContext(), TwitterActivity.class));
+            return true;
+        }
+
+        if (id == R.id.id_Sentiment) {
+            startActivity(new Intent(getApplicationContext(), SentimentActivity.class));
+            return true;
+        }
+
+        if (id == R.id.id_aboutUs) {
+            startActivity(new Intent(getApplicationContext(), AboutUsActivity.class));
+            return true;
+        }
+
+        if (id == R.id.id_coinInfo) {
+            startActivity(new Intent(getApplicationContext(), InfoActivity.class));
+            return true;
+        }
+
+        if (id == R.id.id_home) {
+            startActivity(new Intent(getApplicationContext(), CurrencyActivity.class));
+            return true;
+        }
+        if (id == R.id.id_history) {
+            startActivity(new Intent(getApplicationContext(), HistoryActivity.class));
+            return true;
+        }
+
+        if (id == R.id.id_graph) {
+            startActivity(new Intent(getApplicationContext(), GraphActivity.class));
+            return true;
+        }
+        return true;
     }
 }

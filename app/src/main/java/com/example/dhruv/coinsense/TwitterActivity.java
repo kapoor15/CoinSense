@@ -126,6 +126,11 @@ public class TwitterActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), HistoryActivity.class));
             return true;
         }
+
+        if (id == R.id.id_graph) {
+            startActivity(new Intent(getApplicationContext(), GraphActivity.class));
+            return true;
+        }
         return true;
     }
 
