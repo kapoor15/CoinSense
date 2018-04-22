@@ -16,20 +16,18 @@
         android:layout_marginBottom="33dp"
         android:layout_marginEnd="204dp"
         android:layout_marginStart="106dp"
-        android:layout_marginTop="59dp"
         android:onClick="updatePassword"
         android:text="Update"
         app:layout_constraintBottom_toTopOf="@+id/textView10"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView30" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/updatec2"
         android:layout_width="89dp"
         android:layout_height="36dp"
-        android:layout_marginBottom="23dp"
-        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="24dp"
         android:onClick="updatec2"
         android:text="CHANGe"
         app:layout_constraintBottom_toTopOf="@+id/updatec3"
@@ -39,31 +37,31 @@
         android:id="@+id/updatec3"
         android:layout_width="89dp"
         android:layout_height="36dp"
-        android:layout_marginBottom="139dp"
+        android:layout_marginBottom="141dp"
         android:layout_marginEnd="25dp"
+        android:layout_marginStart="30dp"
         android:onClick="updatec3"
         android:text="Change"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Crypto3" />
 
     <TextView
         android:id="@+id/textView23"
         android:layout_width="97dp"
         android:layout_height="26dp"
         android:layout_marginBottom="149dp"
-        android:layout_marginEnd="25dp"
         android:layout_marginStart="21dp"
         android:text="Currency 3"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/Crypto3"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView21"
         android:layout_width="104dp"
         android:layout_height="33dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="22dp"
         android:layout_marginEnd="24dp"
         android:layout_marginStart="16dp"
         android:text="Currency 2"
@@ -76,34 +74,34 @@
         android:id="@+id/textView10"
         android:layout_width="104dp"
         android:layout_height="28dp"
-        android:layout_marginBottom="22dp"
+        android:layout_marginBottom="21dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginStart="16dp"
         android:text="Currency 1"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView21"
+        app:layout_constraintEnd_toStartOf="@+id/Crypto1"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/Email"
-        android:layout_width="173dp"
-        android:layout_height="29dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="84dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="187dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="19dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="23dp"
         android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/textView27"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/textView26" />
+        app:layout_constraintStart_toEndOf="@+id/textView8" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="136dp"
         android:layout_height="29dp"
         android:layout_marginBottom="20dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginStart="29dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="13dp"
         android:layout_marginTop="30dp"
         android:text="Email"
         android:textSize="18sp"
@@ -117,14 +115,12 @@
         android:id="@+id/updatec1"
         android:layout_width="89dp"
         android:layout_height="36dp"
-        android:layout_marginBottom="14dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginTop="114dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="24dp"
         android:onClick="updatec1"
         android:text="Change"
         app:layout_constraintBottom_toTopOf="@+id/updatec2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NewPass" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/textView26"
@@ -146,61 +142,53 @@
         android:id="@+id/textView27"
         android:layout_width="202dp"
         android:layout_height="38dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="1dp"
         android:layout_marginEnd="204dp"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="20dp"
         android:text="Update Password"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView30"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Email" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
         android:id="@+id/Crypto1"
         android:layout_width="123dp"
         android:layout_height="30dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="19dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="33dp"
         android:entries="@array/CryptocurrencyChoice1"
         app:layout_constraintBottom_toTopOf="@+id/Crypto2"
-        app:layout_constraintEnd_toStartOf="@+id/updatec1"
-        app:layout_constraintStart_toEndOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/Updatepass" />
+        app:layout_constraintEnd_toStartOf="@+id/updatec1" />
 
     <Spinner
         android:id="@+id/Crypto2"
         android:layout_width="123dp"
         android:layout_height="30dp"
         android:layout_marginBottom="23dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
         android:entries="@array/CryptocurrencyChoice2"
         app:layout_constraintBottom_toTopOf="@+id/Crypto3"
-        app:layout_constraintEnd_toStartOf="@+id/updatec2"
-        app:layout_constraintTop_toBottomOf="@+id/Crypto1" />
+        app:layout_constraintEnd_toStartOf="@+id/updatec2" />
 
     <Spinner
         android:id="@+id/Crypto3"
         android:layout_width="124dp"
         android:layout_height="27dp"
-        android:layout_marginBottom="49dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="50dp"
+        android:layout_marginStart="25dp"
         android:entries="@array/CryptocurrencyChoice3"
         app:layout_constraintBottom_toTopOf="@+id/toHome"
-        app:layout_constraintEnd_toStartOf="@+id/updatec3" />
+        app:layout_constraintStart_toEndOf="@+id/textView23" />
 
     <Button
         android:id="@+id/toHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="51dp"
-        android:layout_marginEnd="187dp"
-        android:layout_marginStart="136dp"
+        android:layout_marginBottom="56dp"
+        android:layout_marginEnd="173dp"
+        android:layout_marginStart="150dp"
         android:onClick="toHome"
         android:text="Home"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -211,25 +199,25 @@
         android:id="@+id/textView30"
         android:layout_width="140dp"
         android:layout_height="34dp"
-        android:layout_marginEnd="21dp"
-        android:layout_marginStart="13dp"
+        android:layout_marginBottom="48dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginStart="6dp"
         android:text="New Password"
+        app:layout_constraintBottom_toTopOf="@+id/Updatepass"
         app:layout_constraintEnd_toStartOf="@+id/NewPass"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="164dp" />
+        app:layout_constraintHorizontal_bias="0.384"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/NewPass"
         android:layout_width="221dp"
         android:layout_height="32dp"
-        android:layout_marginBottom="60dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginBottom="48dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="40dp"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/Updatepass"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView30"
-        app:layout_constraintTop_toBottomOf="@+id/textView27" />
+        app:layout_constraintStart_toEndOf="@+id/textView30" />
 </android.support.constraint.ConstraintLayout>
