@@ -372,16 +372,14 @@ public class CurrencyActivity extends AppCompatActivity {
         }*/
 
 
-<<<<<<< HEAD
+
 
 
     //}
 
-=======
-    }
 
-    public void history(View v) {
-        startActivity(new Intent(getApplicationContext(), HistoryActivity.class));
->>>>>>> 65f0de8e6290e8321dcc5f980a086cf836496c44
+
+
+
 
 }

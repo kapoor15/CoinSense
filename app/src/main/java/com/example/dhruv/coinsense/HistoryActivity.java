@@ -190,7 +190,7 @@ public class HistoryActivity extends AppCompatActivity {
         return Integer.parseInt(days);
     }
 
-<<<<<<< HEAD
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
@@ -230,7 +230,8 @@ public class HistoryActivity extends AppCompatActivity {
             return true;
         }
         return true;
-=======
+    }
+
     public String getVolume(String currency) throws IOException{
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
@@ -262,6 +263,5 @@ public class HistoryActivity extends AppCompatActivity {
         }
 
         return volume;
->>>>>>> 65f0de8e6290e8321dcc5f980a086cf836496c44
     }
 }
