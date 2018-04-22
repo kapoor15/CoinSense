@@ -38,10 +38,14 @@
             android:name=".HistoryActivity"
             android:label="@string/title_activity_history"
             android:theme="@style/AppTheme.NoActionBar" />
+<<<<<<< HEAD
         <activity
             android:name=".AccountSettingsActivity"
             android:label="@string/title_activity_account_settings"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+=======
+        <activity android:name=".GraphActivity"></activity>
+>>>>>>> f2aca2ebf7896fab30820c7e35af7bc95e4983df
     </application>
 
 </manifest>

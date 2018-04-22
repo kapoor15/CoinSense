@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:title="getTweets"
+        android:title="Get Tweets"
         android:id="@+id/id_getTweets"
         android:orderInCategory="100"
         app:showAsAction="never" />
@@ -26,8 +26,20 @@
         app:showAsAction="never" />
 
     <item
+        android:title="History"
+        android:id="@+id/id_history"
+        android:orderInCategory="104"
+        app:showAsAction="never" />
+
+    <item
         android:title="Home"
         android:id="@+id/id_home"
-        android:orderInCategory="104"
+        android:orderInCategory="105"
+        app:showAsAction="never" />
+
+    <item
+        android:title="Price Graphs"
+        android:id="@+id/id_graph"
+        android:orderInCategory="105"
         app:showAsAction="never" />
 </menu>

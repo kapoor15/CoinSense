@@ -145,6 +145,16 @@ public class CurrencyActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), CurrencyActivity.class));
             return true;
         }
+
+        if (id == R.id.id_history) {
+            startActivity(new Intent(getApplicationContext(), HistoryActivity.class));
+            return true;
+        }
+
+        if (id == R.id.id_graph) {
+            startActivity(new Intent(getApplicationContext(), GraphActivity.class));
+            return true;
+        }
         return true;
     }
 
@@ -166,14 +176,29 @@ public class CurrencyActivity extends AppCompatActivity {
         }
     }
 
+    /*
     public String getprice(String currency) throws IOException{
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
         StrictMode.setThreadPolicy(policy);
 
 
+        String adder = currency;
+
+        if (currency.equalsIgnoreCase("Bitcoin cash")) {
+            adder = "bitcoin-cash";
+        }
+
+        if (currency.equalsIgnoreCase("Ethereum Classic")) {
+            adder = "ethereum-classic";
+        }
+
+        if (currency.equalsIgnoreCase("Bitcoin gold")) {
+            adder = "bitcoin-gold";
+        }
+
             DefaultHttpClient httpClient = new DefaultHttpClient();
-            HttpGet httpGet = new HttpGet("https://coinmarketcap.com/currencies/" + currency + "/");
+            HttpGet httpGet = new HttpGet("https://coinmarketcap.com/currencies/" + adder + "/");
             ResponseHandler<String> resHandler = new BasicResponseHandler();
             String page = httpClient.execute(httpGet, resHandler);
             Pattern pattern = Pattern.compile("data-currency-price data-usd=(.*?)>");
@@ -184,6 +209,41 @@ public class CurrencyActivity extends AppCompatActivity {
             }
 
             return price;
+
+    }*/
+
+    public String getprice(String currency) throws IOException{
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
+
+
+        String adder = currency;
+
+        if (currency.equalsIgnoreCase("Bitcoin cash")) {
+            adder = "bitcoin-cash";
+        }
+
+        if (currency.equalsIgnoreCase("Ethereum Classic")) {
+            adder = "ethereum-classic";
+        }
+
+        if (currency.equalsIgnoreCase("Bitcoin gold")) {
+            adder = "bitcoin-gold";
+        }
+
+        DefaultHttpClient httpClient = new DefaultHttpClient();
+        HttpGet httpGet = new HttpGet("https://coinmarketcap.com/currencies/" + adder + "/");
+        ResponseHandler<String> resHandler = new BasicResponseHandler();
+        String page = httpClient.execute(httpGet, resHandler);
+        Pattern pattern = Pattern.compile("data-currency-price data-usd=(.*?)>");
+        Matcher matcher = pattern.matcher(page);
+        String price = "";
+        if (matcher.find()) {
+            price = matcher.group(1);
+        }
+
+        return price;
 
     }
 
@@ -207,40 +267,6 @@ public class CurrencyActivity extends AppCompatActivity {
             //System.out.println("!!!!!!!!!!!!!!!!!!!!!!##############" + oldprice);
 
         }
-       /* CurrentUser = user.getEmail().toString();
-        //String oldprice;
-        root.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                final List<String> cryptoprice = new ArrayList<String>();
-System.out.println("&&&&&&&&&&&&&&&&&&&&&");
-                for (DataSnapshot u: dataSnapshot.getChildren()) {
-                    if (u.child("email").getValue(String.class) != null) {
-                        if (u.child("email").getValue(String.class).equals(CurrentUser)) {
-                            if (index == 1) {
-                                //final String pricetemp;
-                                oldprice = u.child("p1").getValue(String.class);
-                                System.out.println("!!!!!!!!!!!!!!!!!!!!!!##############" + oldprice);
-                            } else if (index == 2) {
-                                oldprice = u.child("p2").getValue(String.class);
-                                System.out.println("!!!!!!!!!!!!!!!!!!!!!!##############" + oldprice);
-
-                            } else if (index == 3) {
-                                oldprice = u.child("p3").getValue(String.class);
-                                System.out.println("!!!!!!!!!!!!!!!!!!!!!!##############" + oldprice);
-
-                            }
-
-                        }
-                    }
-                }
-
-
-            } @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });*/
 
         int indexold1 = oldprice.indexOf('"');
         int indexold2 = oldprice.lastIndexOf('"');
@@ -268,23 +294,34 @@ System.out.println("&&&&&&&&&&&&&&&&&&&&&");
 
         String selection = (String) ((Spinner) findViewById(R.id.choice_spinner)).getSelectedItem();
 
-
-        if (selection.equalsIgnoreCase("Bitcoin")) {
-            DefaultHttpClient httpClient = new DefaultHttpClient();
-            HttpGet httpGet = new HttpGet("https://coinmarketcap.com/currencies/bitcoin/");
-            ResponseHandler<String> resHandler = new BasicResponseHandler();
-            String page = httpClient.execute(httpGet, resHandler);
-            Pattern pattern = Pattern.compile("data-currency-price data-usd=(.*?)>");
-            Matcher matcher = pattern.matcher(page);
-            String price = "";
-            if (matcher.find()) {
-                price = matcher.group(1);
-            }
-            ((TextView) findViewById(R.id.price_text)).setText("Price of Bitcoin in USD is "
-                    + price);
-
+        if (selection.equalsIgnoreCase("Bitcoin cash")) {
+            selection = "bitcoin-cash";
         }
-        else if (selection.equalsIgnoreCase("Ethereum")) {
+
+        if (selection.equalsIgnoreCase("Ethereum Classic")) {
+            selection = "ethereum-classic";
+        }
+
+        if (selection.equalsIgnoreCase("Bitcoin gold")) {
+            selection = "bitcoin-gold";
+        }
+        //if (selection.equalsIgnoreCase("Bitcoin")) {
+        DefaultHttpClient httpClient = new DefaultHttpClient();
+        HttpGet httpGet = new HttpGet("https://coinmarketcap.com/currencies/" + selection + "/");
+        ResponseHandler<String> resHandler = new BasicResponseHandler();
+        String page = httpClient.execute(httpGet, resHandler);
+        Pattern pattern = Pattern.compile("data-currency-price data-usd=(.*?)>");
+        Matcher matcher = pattern.matcher(page);
+        String price = "";
+        if (matcher.find()) {
+            price = matcher.group(1);
+        }
+        ((TextView) findViewById(R.id.price_text)).setText("Price of " + selection + " in USD is "
+                + price);
+    }
+
+        //}
+        /*else if (selection.equalsIgnoreCase("Ethereum")) {
             DefaultHttpClient httpClient = new DefaultHttpClient();
             HttpGet httpGet = new HttpGet("https://coinmarketcap.com/currencies/ethereum/");
             ResponseHandler<String> resHandler = new BasicResponseHandler();
@@ -337,20 +374,29 @@ System.out.println("&&&&&&&&&&&&&&&&&&&&&");
             }
             ((TextView) findViewById(R.id.price_text)).setText("Price of Litecoin in USD is "
                     + price);
-        }
+        }*/
 
 
+
+
+
+    //}
+
+
+    public void graph(View v) {
+        startActivity(new Intent(getApplicationContext(), GraphActivity.class));
+    }
 
 
 
     }
-
-    public void history(View v) {
-        startActivity(new Intent(getApplicationContext(), HistoryActivity.class));
-
-    }
+<<<<<<< HEAD
     public void AccSettings(View v)
     {
         startActivity(new Intent(getApplicationContext(), AccountSettingsActivity.class));
     }
 }
+=======
+
+
+>>>>>>> f2aca2ebf7896fab30820c7e35af7bc95e4983df

@@ -1,11 +1,14 @@
 package com.example.dhruv.coinsense;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -29,7 +32,39 @@ public class HistoryActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }
+    public void checkPrice(View v) throws IOException {
 
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
+
+        String selection = (String) ((Spinner) findViewById(R.id.choice_spinner)).getSelectedItem();
+
+        if (selection.equalsIgnoreCase("Bitcoin cash")) {
+            selection = "bitcoin-cash";
+        }
+
+        if (selection.equalsIgnoreCase("Ethereum Classic")) {
+            selection = "ethereum-classic";
+        }
+
+        if (selection.equalsIgnoreCase("Bitcoin gold")) {
+            selection = "bitcoin-gold";
+        }
+        //if (selection.equalsIgnoreCase("Bitcoin")) {
+        DefaultHttpClient httpClient = new DefaultHttpClient();
+        HttpGet httpGet = new HttpGet("https://coinmarketcap.com/currencies/" + selection + "/");
+        ResponseHandler<String> resHandler = new BasicResponseHandler();
+        String page = httpClient.execute(httpGet, resHandler);
+        Pattern pattern = Pattern.compile("data-currency-price data-usd=(.*?)>");
+        Matcher matcher = pattern.matcher(page);
+        String price = "";
+        if (matcher.find()) {
+            price = matcher.group(1);
+        }
+        ((TextView) findViewById(R.id.price_text)).setText("Price of " + selection + " in USD is "
+                + price);
+    }
     public void analyze(View view) throws IOException {
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -153,5 +188,86 @@ public class HistoryActivity extends AppCompatActivity {
     public int getDays() {
         String days = ((Spinner) findViewById(R.id.days_spinner)).getSelectedItem().toString();
         return Integer.parseInt(days);
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.id_getTweets) {
+            startActivity(new Intent(getApplicationContext(), TwitterActivity.class));
+            return true;
+        }
+
+        if (id == R.id.id_Sentiment) {
+            startActivity(new Intent(getApplicationContext(), SentimentActivity.class));
+            return true;
+        }
+
+        if (id == R.id.id_aboutUs) {
+            startActivity(new Intent(getApplicationContext(), AboutUsActivity.class));
+            return true;
+        }
+
+        if (id == R.id.id_coinInfo) {
+            startActivity(new Intent(getApplicationContext(), InfoActivity.class));
+            return true;
+        }
+
+        if (id == R.id.id_home) {
+            startActivity(new Intent(getApplicationContext(), CurrencyActivity.class));
+            return true;
+        }
+
+        if (id == R.id.id_history) {
+            startActivity(new Intent(getApplicationContext(), HistoryActivity.class));
+            return true;
+        }
+
+        if (id == R.id.id_graph) {
+            startActivity(new Intent(getApplicationContext(), GraphActivity.class));
+            return true;
+        }
+
+        return true;
+    }
+
+    public String getVolume(String currency) throws IOException{
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
+
+        String adder = currency;
+
+        if (currency.equalsIgnoreCase("Bitcoin cash")) {
+            adder = "bitcoin-cash";
+        }
+
+        if (currency.equalsIgnoreCase("Ethereum Classic")) {
+            adder = "ethereum-classic";
+        }
+
+        if (currency.equalsIgnoreCase("Bitcoin gold")) {
+            adder = "bitcoin-gold";
+        }
+
+        DefaultHttpClient httpClient = new DefaultHttpClient();
+        HttpGet httpGet = new HttpGet("https://coinmarketcap.com/currencies/" + adder + "/");
+        ResponseHandler<String> resHandler = new BasicResponseHandler();
+        String page = httpClient.execute(httpGet, resHandler);
+        Pattern pattern = Pattern.compile("data-currency-volume data-usd=(.*?)>");
+        Matcher matcher = pattern.matcher(page);
+        String volume = "";
+        if (matcher.find()) {
+            volume = matcher.group(1);
+        }
+
+        return volume;
     }
 }

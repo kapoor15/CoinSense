@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,9 +28,17 @@ import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.BasicResponseHandler;
+import org.apache.http.impl.client.DefaultHttpClient;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import twitter4j.Query;
 import twitter4j.QueryResult;
@@ -135,6 +144,14 @@ public class SentimentActivity extends AppCompatActivity {
 
         if (id == R.id.id_home) {
             startActivity(new Intent(getApplicationContext(), CurrencyActivity.class));
+            return true;
+        }
+        if (id == R.id.id_history) {
+            startActivity(new Intent(getApplicationContext(), HistoryActivity.class));
+            return true;
+        }
+        if (id == R.id.id_graph) {
+            startActivity(new Intent(getApplicationContext(), GraphActivity.class));
             return true;
         }
 
@@ -259,6 +276,40 @@ public class SentimentActivity extends AppCompatActivity {
         graph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
 
 
+    }
+
+    public void checkPrice(View v) throws IOException {
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
+
+        String selection = (String) ((Spinner) findViewById(R.id.choice_spinner)).getSelectedItem();
+
+        if (selection.equalsIgnoreCase("Bitcoin cash")) {
+            selection = "bitcoin-cash";
+        }
+
+        if (selection.equalsIgnoreCase("Ethereum Classic")) {
+            selection = "ethereum-classic";
+        }
+
+        if (selection.equalsIgnoreCase("Bitcoin gold")) {
+            selection = "bitcoin-gold";
+        }
+        //if (selection.equalsIgnoreCase("Bitcoin")) {
+        DefaultHttpClient httpClient = new DefaultHttpClient();
+        HttpGet httpGet = new HttpGet("https://coinmarketcap.com/currencies/" + selection + "/");
+        ResponseHandler<String> resHandler = new BasicResponseHandler();
+        String page = httpClient.execute(httpGet, resHandler);
+        Pattern pattern = Pattern.compile("data-currency-price data-usd=(.*?)>");
+        Matcher matcher = pattern.matcher(page);
+        String price = "";
+        if (matcher.find()) {
+            price = matcher.group(1);
+        }
+        ((TextView) findViewById(R.id.price_text)).setText("Price of " + selection + " in USD is "
+                + price);
     }
 
 
