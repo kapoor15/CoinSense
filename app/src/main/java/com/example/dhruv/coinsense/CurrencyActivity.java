@@ -51,10 +51,16 @@ public class CurrencyActivity extends AppCompatActivity {
     String p1;
     String p2;
     String p3;
+    String v1;
+    String v2;
+    String v3;
     String uid;
     String oldprice1;
     String oldprice2;
     String oldprice3;
+    String oldvol1;
+    String oldvol2;
+    String oldvol3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +74,9 @@ public class CurrencyActivity extends AppCompatActivity {
         p1 = "0";
         p2 = "0";
         p3 = "0";
-
+        v1 = "0";
+        v2 = "0";
+        v3 = "0";
         //((TextView) findViewById(R.id.username)).setText(user.getEmail());
         CurrentUser = user.getEmail().toString();
 
@@ -90,6 +98,12 @@ public class CurrencyActivity extends AppCompatActivity {
                                p1 = getprice(u.child("crypto1").getValue(String.class));
                                p2 = getprice(u.child("crypto2").getValue(String.class));
                                p3 = getprice(u.child("crypto3").getValue(String.class));
+                                oldvol1 = u.child("v1").getValue(String.class);
+                                oldvol2 = u.child("v2").getValue(String.class);
+                                oldvol3 = u.child("v3").getValue(String.class);
+                                v1 = getvol(u.child("crypto1").getValue(String.class));
+                                v2 = getvol(u.child("crypto2").getValue(String.class));
+                                v3 = getvol(u.child("crypto3").getValue(String.class));
                              } catch(IOException ie) {
                                 ie.printStackTrace();
                              }
@@ -98,9 +112,15 @@ public class CurrencyActivity extends AppCompatActivity {
                 }
 
                 Spinner cryptoSpinner = (Spinner) findViewById(R.id.choice_spinner);
+                Spinner cryptoSpinner2 = (Spinner) findViewById(R.id.choice_spinner2);
+                Spinner cryptoSpinner3 = (Spinner) findViewById(R.id.choice_spinner3);
+                Spinner cryptoSpinner4 = (Spinner) findViewById(R.id.choice_spinner4);
                 ArrayAdapter<String> areasAdapter = new ArrayAdapter<String>(CurrencyActivity.this, android.R.layout.simple_spinner_item, cryptos);
                 areasAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 cryptoSpinner.setAdapter(areasAdapter);
+                cryptoSpinner2.setAdapter(areasAdapter);
+                cryptoSpinner3.setAdapter(areasAdapter);
+                cryptoSpinner4.setAdapter(areasAdapter);
             } @Override
             public void onCancelled(DatabaseError databaseError) {
 
@@ -154,6 +174,10 @@ public class CurrencyActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), GraphActivity.class));
             return true;
         }
+
+        if (id == R.id.id_account) {
+            startActivity(new Intent(getApplicationContext(), AccountSettingsActivity.class));
+        }
         return true;
     }
 
@@ -164,6 +188,9 @@ public class CurrencyActivity extends AppCompatActivity {
         root.child("users").child(uid).child("p1").setValue(p1);
         root.child("users").child(uid).child("p2").setValue(p2);
         root.child("users").child(uid).child("p3").setValue(p3);
+        root.child("users").child(uid).child("v1").setValue(v1);
+        root.child("users").child(uid).child("v2").setValue(v2);
+        root.child("users").child(uid).child("v3").setValue(v3);
         FirebaseAuth.getInstance().signOut();
         //LoginManager.getInstance().logOut();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -246,10 +273,84 @@ public class CurrencyActivity extends AppCompatActivity {
 
     }
 
+    public String getvol(String currency) throws IOException{
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
+
+
+        String adder = currency;
+
+        if (currency.equalsIgnoreCase("Bitcoin cash")) {
+            adder = "bitcoin-cash";
+        }
+
+        if (currency.equalsIgnoreCase("Ethereum Classic")) {
+            adder = "ethereum-classic";
+        }
+
+        if (currency.equalsIgnoreCase("Bitcoin gold")) {
+            adder = "bitcoin-gold";
+        }
+
+        DefaultHttpClient httpClient = new DefaultHttpClient();
+        HttpGet httpGet = new HttpGet("https://coinmarketcap.com/currencies/" + adder + "/");
+        ResponseHandler<String> resHandler = new BasicResponseHandler();
+        String page = httpClient.execute(httpGet, resHandler);
+        Pattern pattern = Pattern.compile("data-currency-volume data-usd=(.*?)>");
+        Matcher matcher = pattern.matcher(page);
+        String vol = "";
+        if (matcher.find()) {
+            vol = matcher.group(1);
+        }
+
+        return vol;
+
+    }
+
+    public void predictionvol(View v) throws IOException {
+        String selection = (String) ((Spinner) findViewById(R.id.choice_spinner4)).getSelectedItem();
+        String newprice = getvol(selection);
+        final int index =  ((Spinner) findViewById(R.id.choice_spinner4)).getSelectedItemPosition() + 1;
+
+        String oldvol = "";
+
+        if (index == 1) {
+            //final String pricetemp;
+            oldvol = oldvol1;
+            // System.out.println("!!!!!!!!!!!!!!!!!!!!!!##############" + oldprice);
+        } else if (index == 2) {
+            oldvol = oldvol2;
+            // System.out.println("!!!!!!!!!!!!!!!!!!!!!!##############" + oldprice);
+
+        } else if (index == 3) {
+            oldvol = oldvol3;
+            //System.out.println("!!!!!!!!!!!!!!!!!!!!!!##############" + oldprice);
+
+        }
+
+        int indexold1 = oldvol.indexOf('"');
+        int indexold2 = oldvol.lastIndexOf('"');
+        oldvol = oldvol.substring(indexold1 + 1, indexold2);
+
+        System.out.println("#########" + newprice);
+        int indexnew1 = newprice.indexOf('"');
+        System.out.println("#########11111" + indexnew1);
+        int indexnew2 = newprice.lastIndexOf('"');
+        System.out.println("#########2222" + indexnew2);
+        newprice = newprice.substring(indexnew1 + 1, indexnew2);
+
+
+
+        double percentage = ((Double.parseDouble(newprice) - Double.parseDouble(oldvol)) / Double.parseDouble(oldvol)) * 100;
+
+        ((TextView) findViewById(R.id.price_text4)).setText("Volume fluctuation of " + selection + " is " + percentage + "%");
+    }
+
     public void prediction(View v) throws IOException {
-        String selection = (String) ((Spinner) findViewById(R.id.choice_spinner)).getSelectedItem();
+        String selection = (String) ((Spinner) findViewById(R.id.choice_spinner2)).getSelectedItem();
         String newprice = getprice(selection);
-        final int index =  ((Spinner) findViewById(R.id.choice_spinner)).getSelectedItemPosition() + 1;
+        final int index =  ((Spinner) findViewById(R.id.choice_spinner2)).getSelectedItemPosition() + 1;
 
         String oldprice = "";
 
@@ -282,7 +383,39 @@ public class CurrencyActivity extends AppCompatActivity {
 
         double percentage = ((Double.parseDouble(newprice) - Double.parseDouble(oldprice)) / Double.parseDouble(oldprice)) * 100;
 
-        ((TextView) findViewById(R.id.price_text)).setText("Price fluctuation of " + selection + " is " + percentage + "%");
+        ((TextView) findViewById(R.id.price_text2)).setText("Price fluctuation of " + selection + " is " + percentage + "%");
+    }
+    public void getVolume(View v) throws IOException{
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
+
+        String selection = (String) ((Spinner) findViewById(R.id.choice_spinner3)).getSelectedItem();
+
+        if (selection.equalsIgnoreCase("Bitcoin cash")) {
+            selection = "bitcoin-cash";
+        }
+
+        if (selection.equalsIgnoreCase("Ethereum Classic")) {
+            selection = "ethereum-classic";
+        }
+
+        if (selection.equalsIgnoreCase("Bitcoin gold")) {
+            selection = "bitcoin-gold";
+        }
+
+        DefaultHttpClient httpClient = new DefaultHttpClient();
+        HttpGet httpGet = new HttpGet("https://coinmarketcap.com/currencies/" + selection + "/");
+        ResponseHandler<String> resHandler = new BasicResponseHandler();
+        String page = httpClient.execute(httpGet, resHandler);
+        Pattern pattern = Pattern.compile("data-currency-volume data-usd=(.*?)>");
+        Matcher matcher = pattern.matcher(page);
+        String volume = "";
+        if (matcher.find()) {
+            volume = matcher.group(1);
+        }
+        ((TextView) findViewById(R.id.price_text3)).setText("Volume of " + selection + " is "
+                + volume);
     }
 
     public void checkPrice(View v) throws IOException {
@@ -388,9 +521,18 @@ public class CurrencyActivity extends AppCompatActivity {
 
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 7c0a07dd6664e9414c6b5dafe9c03d39539c1eaa
     public void AccSettings(View v)
     {
         startActivity(new Intent(getApplicationContext(), AccountSettingsActivity.class));
     }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7c0a07dd6664e9414c6b5dafe9c03d39539c1eaa
 

@@ -10,7 +10,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+<<<<<<< HEAD
 import android.util.Log;
+=======
+import android.view.Menu;
+import android.view.MenuItem;
+>>>>>>> 7c0a07dd6664e9414c6b5dafe9c03d39539c1eaa
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -204,7 +209,55 @@ public class AccountSettingsActivity extends AppCompatActivity {
                     });
         }
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.id_getTweets) {
+            startActivity(new Intent(getApplicationContext(), TwitterActivity.class));
+            return true;
+        }
+
+        if (id == R.id.id_Sentiment) {
+            startActivity(new Intent(getApplicationContext(), SentimentActivity.class));
+            return true;
+        }
+
+        if (id == R.id.id_aboutUs) {
+            startActivity(new Intent(getApplicationContext(), AboutUsActivity.class));
+            return true;
+        }
+
+        if (id == R.id.id_coinInfo) {
+            startActivity(new Intent(getApplicationContext(), InfoActivity.class));
+            return true;
+        }
+
+        if (id == R.id.id_home) {
+            startActivity(new Intent(getApplicationContext(), CurrencyActivity.class));
+            return true;
+        }
+
+        if (id == R.id.id_history) {
+            startActivity(new Intent(getApplicationContext(), HistoryActivity.class));
+            return true;
+        }
+
+        if (id == R.id.id_graph) {
+            startActivity(new Intent(getApplicationContext(), GraphActivity.class));
+            return true;
+        }
+
+        if (id == R.id.id_account) {
+            startActivity(new Intent(getApplicationContext(), AccountSettingsActivity.class));
+        }
+        return true;
+    }
     void toHome(View v)
     {
         startActivity(new Intent(getApplicationContext(), CurrencyActivity.class));

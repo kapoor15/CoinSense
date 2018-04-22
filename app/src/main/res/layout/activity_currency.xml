@@ -7,6 +7,29 @@
     tools:context="com.example.dhruv.coinsense.CurrencyActivity"
     tools:layout_editor_absoluteY="81dp">
 
+    <Spinner
+        android:id="@+id/choice_spinner2"
+        android:layout_width="150dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="15dp"
+        android:entries="@array/currency_array"
+        app:layout_constraintEnd_toStartOf="@+id/id_prediction"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/prediction_text" />
+
+    <Spinner
+        android:id="@+id/choice_spinner3"
+        android:layout_width="150dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="15dp"
+        android:entries="@array/currency_array"
+        app:layout_constraintEnd_toStartOf="@+id/id_volume"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/volume_text" />
 
     <Button
         android:id="@+id/signout_btn"
@@ -21,6 +44,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/price_text" />
+
+    <Button
+        android:id="@+id/id_prediction"
+        android:layout_width="74dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="117dp"
+        android:layout_marginTop="15dp"
+        android:onClick="prediction"
+        android:text="Prediction"
+        android:textSize="8sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/prediction_text" />
+
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/header"
@@ -37,21 +73,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-        <Button
-            android:id="@+id/id_prediction"
-            android:layout_width="74dp"
-            android:layout_height="32dp"
-            android:layout_marginBottom="1dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginStart="300dp"
-            android:layout_marginTop="16dp"
-            android:onClick="prediction"
-            android:text="Prediction"
-            android:textSize="8sp"
-            app:layout_constraintBottom_toTopOf="@+id/signout_btn"
-            app:layout_constraintEnd_toStartOf="@+id/header"
-            app:layout_constraintStart_toEndOf="@+id/go_button"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/go_button"
@@ -106,19 +127,106 @@
 
     </android.support.constraint.ConstraintLayout>
 
-    <Button
-        android:id="@+id/AccSettings"
+    <TextView
+        android:id="@+id/predictionvol_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="57dp"
-        android:layout_marginEnd="217dp"
-        android:layout_marginStart="79dp"
-        android:layout_marginTop="58dp"
-        android:onClick="AccSettings"
-        android:text="Account Settings"
-        app:layout_constraintBottom_toTopOf="@+id/history_button"
+        android:layout_marginTop="20dp"
+        android:text="Get volume change from your last log in for any currency from the list below:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/price_text3" />
+
+    <TextView
+        android:id="@+id/price_text4"
+        android:layout_width="196dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginEnd="84dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="15dp"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/signout_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/choice_spinner4" />
+
+    <Button
+        android:id="@+id/id_volumepredict"
+        android:layout_width="74dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="108dp"
+        android:layout_marginTop="15dp"
+        android:onClick="predictionvol"
+        android:text="Get Volume"
+        android:textSize="8sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/predictionvol_text" />
+
+    <Spinner
+        android:id="@+id/choice_spinner4"
+        android:layout_width="150dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="15dp"
+        android:entries="@array/currency_array"
+        app:layout_constraintEnd_toStartOf="@+id/id_volumepredict"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/predictionvol_text" />
+
+    <TextView
+        android:id="@+id/prediction_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="5dp"
+        android:text="Get price change from your last log in for any currency from the list below:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/header" />
+
+    <TextView
+        android:id="@+id/price_text2"
+        android:layout_width="196dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="163dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="15dp"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/choice_spinner2" />
+
+    <TextView
+        android:id="@+id/volume_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Get volume for any currency from the list below:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/price_text2" />
+
+    <TextView
+        android:id="@+id/price_text3"
+        android:layout_width="196dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="163dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="15dp"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/choice_spinner3" />
+
+    <Button
+        android:id="@+id/id_volume"
+        android:layout_width="74dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="117dp"
+        android:layout_marginTop="15dp"
+        android:onClick="getVolume"
+        android:text="Get Volume"
+        android:textSize="8sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/volume_text" />
 
 </android.support.constraint.ConstraintLayout>

@@ -34,12 +34,18 @@
     <item
         android:title="Home"
         android:id="@+id/id_home"
-        android:orderInCategory="105"
+        android:orderInCategory="106"
         app:showAsAction="never" />
 
     <item
         android:title="Price Graphs"
         android:id="@+id/id_graph"
         android:orderInCategory="105"
+        app:showAsAction="never" />
+
+    <item
+        android:title="Account Settings"
+        android:id="@+id/id_account"
+        android:orderInCategory="107"
         app:showAsAction="never" />
 </menu>
