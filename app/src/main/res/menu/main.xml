@@ -26,8 +26,14 @@
         app:showAsAction="never" />
 
     <item
+        android:title="History"
+        android:id="@+id/id_history"
+        android:orderInCategory="104"
+        app:showAsAction="never" />
+
+    <item
         android:title="Home"
         android:id="@+id/id_home"
-        android:orderInCategory="104"
+        android:orderInCategory="105"
         app:showAsAction="never" />
 </menu>
