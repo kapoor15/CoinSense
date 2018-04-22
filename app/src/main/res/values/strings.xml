@@ -42,17 +42,11 @@
         <item>Stellar</item>
         <item>EOS</item>
         <item>Dash</item>
-        <item>IOTA</item>
         <item>Monero</item>
-        <item>NEM</item>
-        <item>Ethereum Classic</item>
-        <item>TRON</item>
-        <item>VeChain</item>
-        <item>Tether</item>
         <item>Lisk</item>
         <item>Bitcoin Gold</item>
-        <item>Qtum</item>
     </string-array>
+
 
     <string-array name="CryptocurrencyChoice3">
         <item>Choice 3</item>
@@ -66,16 +60,9 @@
         <item>Stellar</item>
         <item>EOS</item>
         <item>Dash</item>
-        <item>IOTA</item>
         <item>Monero</item>
-        <item>NEM</item>
-        <item>Ethereum Classic</item>
-        <item>TRON</item>
-        <item>VeChain</item>
-        <item>Tether</item>
         <item>Lisk</item>
         <item>Bitcoin Gold</item>
-        <item>Qtum</item>
     </string-array>
 
     <string name="facebook_app_id">1996674077241804</string>
@@ -92,16 +79,9 @@
         <item>Stellar</item>
         <item>EOS</item>
         <item>Dash</item>
-        <item>IOTA</item>
         <item>Monero</item>
-        <item>NEM</item>
-        <item>Ethereum Classic</item>
-        <item>TRON</item>
-        <item>VeChain</item>
-        <item>Tether</item>
         <item>Lisk</item>
         <item>Bitcoin Gold</item>
-        <item>Qtum</item>
     </string-array>
 
     <string-array name="Days">
@@ -129,4 +109,5 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_sentiment">SentimentActivity</string>
     <string name="title_activity_history">HistoryActivity</string>
+    <string name="title_activity_account_settings">AccountSettingsActivity</string>
 </resources>

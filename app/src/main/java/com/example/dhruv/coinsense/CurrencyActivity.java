@@ -349,4 +349,8 @@ System.out.println("&&&&&&&&&&&&&&&&&&&&&");
         startActivity(new Intent(getApplicationContext(), HistoryActivity.class));
 
     }
+    public void AccSettings(View v)
+    {
+        startActivity(new Intent(getApplicationContext(), AccountSettingsActivity.class));
+    }
 }
