@@ -234,7 +234,9 @@ public class HistoryActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), GraphActivity.class));
             return true;
         }
-
+        if (id == R.id.id_account) {
+            startActivity(new Intent(getApplicationContext(), AccountSettingsActivity.class));
+        }
         return true;
     }
 

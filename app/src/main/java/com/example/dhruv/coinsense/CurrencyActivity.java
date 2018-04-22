@@ -114,11 +114,13 @@ public class CurrencyActivity extends AppCompatActivity {
                 Spinner cryptoSpinner = (Spinner) findViewById(R.id.choice_spinner);
                 Spinner cryptoSpinner2 = (Spinner) findViewById(R.id.choice_spinner2);
                 Spinner cryptoSpinner3 = (Spinner) findViewById(R.id.choice_spinner3);
+                Spinner cryptoSpinner4 = (Spinner) findViewById(R.id.choice_spinner4);
                 ArrayAdapter<String> areasAdapter = new ArrayAdapter<String>(CurrencyActivity.this, android.R.layout.simple_spinner_item, cryptos);
                 areasAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 cryptoSpinner.setAdapter(areasAdapter);
                 cryptoSpinner2.setAdapter(areasAdapter);
                 cryptoSpinner3.setAdapter(areasAdapter);
+                cryptoSpinner4.setAdapter(areasAdapter);
             } @Override
             public void onCancelled(DatabaseError databaseError) {
 
@@ -172,6 +174,10 @@ public class CurrencyActivity extends AppCompatActivity {
         if (id == R.id.id_graph) {
             startActivity(new Intent(getApplicationContext(), GraphActivity.class));
             return true;
+        }
+
+        if (id == R.id.id_account) {
+            startActivity(new Intent(getApplicationContext(), AccountSettingsActivity.class));
         }
         return true;
     }
@@ -516,14 +522,12 @@ public class CurrencyActivity extends AppCompatActivity {
 
 
 
-    }
-<<<<<<< HEAD
+
+
     public void AccSettings(View v)
     {
         startActivity(new Intent(getApplicationContext(), AccountSettingsActivity.class));
     }
 }
-=======
 
 
->>>>>>> f2aca2ebf7896fab30820c7e35af7bc95e4983df
